@@ -1,4 +1,4 @@
-- hosts: linuxcnc
+- hosts: boxfordcnc.lan.london.hackspace.org.uk
   remote_user: root
 
   tasks:
