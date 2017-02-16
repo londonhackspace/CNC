@@ -1,0 +1,114 @@
+[lhshosts]
+# ubuntu something
+tesla.lan.london.hackspace.org.uk syslocation="On the desk outside the classroom"
+
+# these are rpi's
+booch.lan.london.hackspace.org.uk syslocation="In the quiet room cabinet"
+wilson.lan.london.hackspace.org.uk syslocation="Above the lathes"
+gill.lan.london.hackspace.org.uk syslocation="On the windowsill above Tesla" lhs_host="gill"
+
+# slow, not much space, dead?
+# bell.lan.london.hackspace.org.uk
+
+# Intel Atom boxes, only a single drive
+boole.lan.london.hackspace.org.uk syslocation="In the rack at the far end of the basement"
+denning.lan.london.hackspace.org.uk syslocation="Above the backdoor"
+
+# 3d printer machine. not on a static ip, this may fail
+torvalds.dhcp.lan.london.hackspace.org.uk syslocation="Ground floor, 3d printing area"
+
+# borg, big thing in the basement
+# running Ubuntu 12.04.5 LTS, could do with upgrading
+borg.lan.london.hackspace.org.uk 	syslocation="Basement rack" lhs_host="borg"
+
+# was blackbox, used by mentar with ROS for the robot arm
+# needs a static ip.
+asimov.dhcp.lan.london.hackspace.org.uk syslocation="It is a mystery"
+
+# fileserver/nas thing
+colin.lan.london.hackspace.org.uk syslocation="Basement rack"
+
+# laptops
+# XXX ssh host key changed? whats up?
+#lorentz.dhcp.lan.london.hackspace.org.uk syslocation="It is a mystery"
+# and some more
+
+# 3d printer machine
+bowyer.lan.london.hackspace.org.uk syslocation="3D print zone"
+
+# Hypervisor and VMs
+lamarr.lan.london.hackspace.org.uk syslocation="Basement rack"
+chomsky.lan.london.hackspace.org.uk syslocation="Lamarr" lhs_host="chomsky"
+acserver.lan.london.hackspace.org.uk syslocation="Lamarr" lhs_host="acserver"
+services.lan.london.hackspace.org.uk syslocation="Lamarr"   lhs_host="services"
+adminstuff.lan.london.hackspace.org.uk syslocation="Lamarr" lhs_host="adminstuff"
+
+# enrolement kiosk thingy
+kiosk.lan.london.hackspace.org.uk syslocation="Outside the classroom" lhs_host="kiosk"
+
+# new CCTV machine
+bruce.lan.london.hackspace.org.uk syslocation="Basement rack" lhs_host="bruce"
+
+dennis.lan.london.hackspace.org.uk syslocation="by the laser cutter" lhs_host="dennis"
+
+# screen tree machines
+tanenbaum.lan.london.hackspace.org.uk	syslocation="Screen Tree (in the cloud)" lhs_host="tanenbaum"
+flowers.lan.london.hackspace.org.uk	syslocation="Screen Tree (lower)" lhs_host="flowers"
+
+sinclair.lan.london.hackspace.org.uk 	syslocation="the classroom" lhs_host="sinclair"
+
+lattner.lan.london.hackspace.org.uk 	syslocation="the basement rack"
+
+boxfordcnc.lan.london.hackspace.org.uk	syslocation="Basement CNC area" lhs_host="boxfordcnc"
+
+# needed so we can exclude chomsky from stub-mailhosts
+[chomsky]
+chomsky.lan.london.hackspace.org.uk syslocation="Lamarr" lhs_host="chomsky"
+
+[external]
+knuth.london.hackspace.org.uk syslocation="Digitalocean London1"
+church.london.hackspace.org.uk syslocation="Digitalocean London1"
+
+[rpis]
+# these are rpi's
+booch.lan.london.hackspace.org.uk syslocation="In the quiet room cabinet"
+wilson.lan.london.hackspace.org.uk syslocation="Above the lathes"
+gill.lan.london.hackspace.org.uk syslocation="On the windowsill above Tesla" lhs_host="gill"
+hamming.lan.london.hackspace.org.uk syslocation="Above the front door" lhs_host="hamming"
+
+# hosts in this section will be configured to get users via ldap
+# they will not get the normal admin users created.
+[ldap-clients]
+lamarr.lan.london.hackspace.org.uk 	syslocation="Basement rack"
+chomsky.lan.london.hackspace.org.uk     syslocation="Lamarr" 
+colin.lan.london.hackspace.org.uk       syslocation="Basement rack"
+acserver.lan.london.hackspace.org.uk    syslocation="Lamarr" lhs_host="acserver"
+services.lan.london.hackspace.org.uk    syslocation="Lamarr" lhs_host="services"
+adminstuff.lan.london.hackspace.org.uk  syslocation="Lamarr" lhs_host="adminstuff"
+dennis.lan.london.hackspace.org.uk  	syslocation="by the laser cutter" lhs_host="dennis"
+tanenbaum.lan.london.hackspace.org.uk	syslocation="Screen Tree (in the cloud)" lhs_host="tanenbaum"
+flowers.lan.london.hackspace.org.uk	syslocation="Screen Tree (lower)" lhs_host="flowers"
+sinclair.lan.london.hackspace.org.uk 	syslocation="the classroom" lhs_host="sinclair"
+borg.lan.london.hackspace.org.uk 	syslocation="Basement rack" lhs_host="borg"
+lattner.lan.london.hackspace.org.uk 	syslocation="the basement rack"
+boxfordcnc.lan.london.hackspace.org.uk	syslocation="Basement CNC area" lhs_host="boxfordcnc"
+
+[screentree]
+tanenbaum.lan.london.hackspace.org.uk	syslocation="Screen Tree (in the cloud)" lhs_host="tanenbaum"
+flowers.lan.london.hackspace.org.uk	syslocation="Screen Tree (lower)" lhs_host="flowers"
+sinclair.lan.london.hackspace.org.uk 	syslocation="the classroom" lhs_host="sinclair"
+
+#
+# N.B. You need to change /etc/exports on colin and run "exportfs -ra" when
+# you add new hosts
+#
+[nfs-clients]
+tanenbaum.lan.london.hackspace.org.uk	syslocation="Screen Tree (in the cloud)" lhs_host="tanenbaum"
+flowers.lan.london.hackspace.org.uk	syslocation="Screen Tree (lower)" lhs_host="flowers"
+lamarr.lan.london.hackspace.org.uk 	syslocation="Basement rack"
+sinclair.lan.london.hackspace.org.uk 	syslocation="the classroom" lhs_host="sinclair"
+borg.lan.london.hackspace.org.uk 	syslocation="Basement rack" lhs_host="borg"
+boxfordcnc.lan.london.hackspace.org.uk	syslocation="Basement CNC area" lhs_host="boxfordcnc"
+
+[cnc]
+boxfordcnc.lan.london.hackspace.org.uk	syslocation="Basement CNC area" lhs_host="boxfordcnc"
