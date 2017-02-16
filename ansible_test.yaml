@@ -1,0 +1,7 @@
+- hosts: linuxcnc
+  remote_user: root
+
+  tasks:
+  - name: "create file"
+    script: scripts/t01_touch
+    when: ! scripts/t01_touch_ok
