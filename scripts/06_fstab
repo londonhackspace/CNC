@@ -1,3 +1,4 @@
+#!/bin/bash
 
 cat <<END > /chroot/cnc/etc/fstab
 proc            /proc           proc    defaults        0       0

@@ -1,3 +1,4 @@
+#!/bin/bash
 
 mkdir -p /chroot/cnc
 mount /dev/sda3 /chroot/cnc

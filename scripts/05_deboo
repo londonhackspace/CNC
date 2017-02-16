@@ -1,2 +1,3 @@
+#!/bin/bash
 
 debootstrap wheezy /chroot/cnc/

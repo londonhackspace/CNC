@@ -1,3 +1,4 @@
+#!/bin/bash
 
 exec chroot /chroot/cnc/ "$@"
 
