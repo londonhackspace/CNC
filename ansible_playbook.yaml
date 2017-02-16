@@ -31,5 +31,28 @@ apt-get update
 apt-get install linuxcnc-uspace"
 EOF
 
+  - name: install features
+    action: <<EOF
+chroot /chroot/cnc/ bash -c "apt-get update
+apt-get install python-lxml
+git clone https://github.com/FernV/NativeCAM.git ~/NativeCAM/
+python ~/NativeCAM/setup.py"
+EOF
+
+
   - name: "Reboot"
     action: reboot now "Ansible provision complete"
+
+
+# Start LinuxCNC with one of these commands (copy/paste) :
+
+# for mill : (axis interface) linuxcnc configs/sim/axis/ncam_demo/mill.ini ; linuxcnc configs/sim/axis/ncam_demo/mill-mm.ini ;
+
+# (gmoccapy interface) linuxcnc configs/sim/gmoccapy/ncam_demo/mill.ini ; linuxcnc configs/sim/gmoccapy/ncam_demo/mill-mm.ini ;
+
+# for plasma : (axis interface) linuxcnc configs/sim/axis/ncam_demo/plasma-2d.ini ; linuxcnc configs/sim/axis/ncam_demo/plasma-2d-mm.ini ; linuxcnc configs/sim/axis/ncam_demo/plasma.ini ; linuxcnc configs/sim/axis/ncam_demo/plasma-mm.ini ;
+
+# (gmoccapy interface) linuxcnc configs/sim/gmoccapy/ncam_demo/plasma-2d.ini ; linuxcnc configs/sim/gmoccapy/ncam_demo/plasma-2d-mm.ini ; linuxcnc configs/sim/gmoccapy/ncam_demo/plasma.ini ; linuxcnc configs/sim/gmoccapy/ncam_demo/plasma-mm.ini ;
+
+# for lathe : (not supported yet) linuxcnc configs/sim/axis/ncam_demo/lathe.ini ;
+
