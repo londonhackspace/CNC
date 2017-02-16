@@ -17,8 +17,11 @@
   - name: "debootstrap debian wheezy"
     script: /scripts/05_deboo
 
+  - name: "install grub"
+    action: chroot /chroot/cnc/ apt-get install -y grub
+  
   - name: "install standard utils"
-    action: apt-get install -y screen rlwrap tcpdump strace git
+    action: chroot /chroot/cnc/ apt-get install -y screen rlwrap tcpdump strace git
 
   - name: "install linux cnc kernel"
     action: <<EOF
