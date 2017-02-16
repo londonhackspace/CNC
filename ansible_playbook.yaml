@@ -17,6 +17,9 @@
   - name: "debootstrap debian wheezy"
     script: /scripts/05_deboo
 
+  - name: "set up fstab"
+    script: /scripts/06_fstab
+
   - name: "install grub"
     action: chroot /chroot/cnc/ apt-get install -y grub
   
