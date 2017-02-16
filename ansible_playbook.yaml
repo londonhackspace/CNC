@@ -1,0 +1,35 @@
+- hosts: linuxcnc
+  remote_user: root
+
+  tasks:
+  - name: "partition the disk"
+    script: /scripts/01_part
+
+  - name: "set up filesystem"
+    script: /scripts/02_filesys
+
+  - name: "mount partition"
+    script: /scripts/03_mount
+
+  - name: "swapon"
+    script: /scripts/04_swapon
+
+  - name: "debootstrap debian wheezy"
+    script: /scripts/05_deboo
+
+  - name: "install standard utils"
+    action: apt-get install -y screen rlwrap tcpdump strace git
+
+  - name: "install linux cnc kernel"
+    action: <<EOF
+chroot /chroot/cnc/ bash -c "apt-get update
+apt-get dist-upgrade
+apt-get install linux-image-rt-686-pae
+apt-key adv --keyserver hkp://keys.gnupg.net --recv-key 3cb9fd148f374fef
+add-apt-repository \"deb http://linuxcnc.org/ wheezy base 2.7-uspace\"
+apt-get update
+apt-get install linuxcnc-uspace"
+EOF
+
+  - name: "Reboot"
+    action: reboot now "Ansible provision complete"
