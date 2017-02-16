@@ -3,22 +3,22 @@
 
   tasks:
   - name: "partition the disk"
-    script: /scripts/01_part
+    script: scripts/01_part
 
   - name: "set up filesystem"
-    script: /scripts/02_filesys
+    script: scripts/02_filesys
 
   - name: "mount partition"
-    script: /scripts/03_mount
+    script: scripts/03_mount
 
   - name: "swapon"
-    script: /scripts/04_swapon
+    script: scripts/04_swapon
 
   - name: "debootstrap debian wheezy"
-    script: /scripts/05_deboo
+    script: scripts/05_deboo
 
   - name: "set up fstab"
-    script: /scripts/06_fstab
+    script: scripts/06_fstab
 
   - name: "install grub"
     action: chroot /chroot/cnc/ apt-get install -y grub
