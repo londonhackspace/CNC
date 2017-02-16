@@ -1,0 +1,5 @@
+
+mkfs.ext4 -F /dev/sda1
+mkswap /dev/sda2
+mkfs.ext4 -F /dev/sda3
+

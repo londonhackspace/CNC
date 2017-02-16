@@ -1,0 +1,24 @@
+#!/bin/bash
+set -eu
+cat <<END | fdisk /dev/sda
+o
+n
+p
+
+
++80M
+n
+p
+
+
++1G
+n
+p
+
+
+
+w
+END
+
+echo OK.
+

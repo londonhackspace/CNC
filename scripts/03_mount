@@ -1,0 +1,6 @@
+
+mkdir -p /chroot/cnc
+mount /dev/sda3 /chroot/cnc
+mkdir -p /chroot/cnc/boot
+mount /dev/sda1 /chroot/cnc/boot
+
