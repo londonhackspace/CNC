@@ -2,6 +2,10 @@
   remote_user: root
 
   tasks:
+
+  - script: scripts/t01_touch_ok
+    register: t01_touch_ok
+
   - name: "create file"
     script: scripts/t01_touch
-    when: ! scripts/t01_touch_ok
+    when: not t01_touch_ok
