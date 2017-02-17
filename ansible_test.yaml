@@ -8,4 +8,4 @@
 
   - name: "create file"
     script: scripts/t01_touch
-    when: not t01_touch_ok
+    when: t01_touch_ok == "NOTOK"
