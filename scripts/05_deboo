@@ -1,3 +1,4 @@
 #!/bin/bash
 
+# XXX should we apt-get update first?
 debootstrap wheezy /chroot/cnc/
