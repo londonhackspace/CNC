@@ -36,7 +36,8 @@
 
   - name: "debootstrap debian wheezy"
     script: scripts/05_deboo
-    when: t05_done|failed
+    args:
+      creates: /chroot/cnc/var/spool/
 
   - name: "set up fstab"
     script: scripts/06_fstab
