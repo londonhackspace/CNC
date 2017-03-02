@@ -1,38 +1,42 @@
 - hosts: boxfordcnc.lan.london.hackspace.org.uk
   remote_user: root
 
+# dependency checking:
+
   tasks:
-  - script: scripts/03_done
-    register: 03_done
+  - script: scripts/t03_done
+    register: t03_done
     ignore_errors: True
 
-  - script: scripts/04_done
-    register: 04_done
+  - script: scripts/t04_done
+    register: t04_done
     ignore_errors: True
+
+# actual scripts:
 
   - name: "partition the disk"
     script: scripts/01_part
-    when: 03_done|failed
+    when: t03_done|failed
 
   - name: "set up filesystem"
     script: scripts/02_filesys
-    when: 03_done|failed
+    when: t03_done|failed
 
   - name: "mount partition"
     script: scripts/03_mount
-    when: 03_done|failed
+    when: t03_done|failed
 
   - name: "swapon"
     script: scripts/04_swapon
-    when: 04_done|failed
+    when: t04_done|failed
 
   - name: "debootstrap debian wheezy"
     script: scripts/05_deboo
-    creates: /chroot/cnc/var/spool/
+    when: test -e /chroot/cnc/var/spool/
 
   - name: "set up fstab"
     script: scripts/06_fstab
-    creates: /chroot/cnc/etc/fstab
+    when: test -e /chroot/cnc/etc/fstab
 
   - name: "install grub"
     action: "chroot /chroot/cnc/ apt-get install -y grub"
