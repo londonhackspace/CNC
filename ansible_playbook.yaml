@@ -53,7 +53,7 @@
     shell: |
       chroot /chroot/cnc/ bash -c "
       apt-key adv --keyserver hkp://keys.gnupg.net --recv-key 3cb9fd148f374fef
-      apt-get install python-software-properties
+      apt-get install -y python-software-properties
       add-apt-repository 'deb http://linuxcnc.org/ wheezy base 2.7-uspace'
       apt-get update"
 
@@ -61,13 +61,13 @@
     shell: |
       chroot /chroot/cnc/ bash -c "
       apt-get dist-upgrade
-      apt-get install linux-image-rt-686-pae
-      apt-get install linuxcnc-uspace"
+      apt-get install -y linux-image-rt-686-pae
+      apt-get install -y linuxcnc-uspace"
 
   - name: install features
     shell: |
       chroot /chroot/cnc/ bash -c "
-      apt-get install python-lxml
+      apt-get install -y python-lxml
       git clone https://github.com/FernV/NativeCAM.git ~/NativeCAM/
       python ~/NativeCAM/setup.py"
 
