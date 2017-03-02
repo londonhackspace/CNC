@@ -49,23 +49,27 @@
   - name: "install standard utils"
     command: "chroot /chroot/cnc/ apt-get install -y screen rlwrap tcpdump strace git"
 
-  - name: "install linux cnc kernel"
-    shell: "chroot /chroot/cnc/ bash -c \"apt-get update
-apt-get dist-upgrade
-apt-get install linux-image-rt-686-pae
-apt-key adv --keyserver hkp://keys.gnupg.net --recv-key 3cb9fd148f374fef
-add-apt-repository 'deb http://linuxcnc.org/ wheezy base 2.7-uspace'
-apt-get update
-apt-get install linuxcnc-uspace\"
-"
+  - name: "add LinuxCNC package repository, update package lists"
+    shell: |
+      chroot /chroot/cnc/ bash -c "
+      apt-key adv --keyserver hkp://keys.gnupg.net --recv-key 3cb9fd148f374fef
+      apt-get install python-software-properties
+      add-apt-repository 'deb http://linuxcnc.org/ wheezy base 2.7-uspace'
+      apt-get update"
+
+  - name: "install Linux CNC kernel and userspace"
+    shell: |
+      chroot /chroot/cnc/ bash -c "
+      apt-get dist-upgrade
+      apt-get install linux-image-rt-686-pae
+      apt-get install linuxcnc-uspace"
 
   - name: install features
-    shell: "chroot /chroot/cnc/ bash -c \"apt-get update
-apt-get install python-lxml
-git clone https://github.com/FernV/NativeCAM.git ~/NativeCAM/
-python ~/NativeCAM/setup.py\"
-"
-
+    shell: |
+      chroot /chroot/cnc/ bash -c "
+      apt-get install python-lxml
+      git clone https://github.com/FernV/NativeCAM.git ~/NativeCAM/
+      python ~/NativeCAM/setup.py"
 
   - name: "Reboot"
     command: "reboot now \"Ansible provision complete\""
