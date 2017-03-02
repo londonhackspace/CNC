@@ -1,0 +1,3 @@
+#!/bin/bash
+
+df /chroot/cnc|grep -q ^/dev/sda3
