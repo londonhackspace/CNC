@@ -51,7 +51,7 @@
     command: "chroot /chroot/cnc/ apt-get install -y screen rlwrap tcpdump strace git"
 
   - name: "install linux cnc kernel"
-    command: "chroot /chroot/cnc/ bash -c \"apt-get update
+    shell: "chroot /chroot/cnc/ bash -c \"apt-get update
 apt-get dist-upgrade
 apt-get install linux-image-rt-686-pae
 apt-key adv --keyserver hkp://keys.gnupg.net --recv-key 3cb9fd148f374fef
@@ -61,7 +61,7 @@ apt-get install linuxcnc-uspace\"
 "
 
   - name: install features
-    command: "chroot /chroot/cnc/ bash -c \"apt-get update
+    shell: "chroot /chroot/cnc/ bash -c \"apt-get update
 apt-get install python-lxml
 git clone https://github.com/FernV/NativeCAM.git ~/NativeCAM/
 python ~/NativeCAM/setup.py\"
