@@ -21,10 +21,10 @@
     script: scripts/06_fstab
 
   - name: "install grub"
-    action: chroot /chroot/cnc/ apt-get install -y grub
+    action: "chroot /chroot/cnc/ apt-get install -y grub"
   
   - name: "install standard utils"
-    action: chroot /chroot/cnc/ apt-get install -y screen rlwrap tcpdump strace git
+    action: "chroot /chroot/cnc/ apt-get install -y screen rlwrap tcpdump strace git"
 
   - name: "install linux cnc kernel"
     action: "chroot /chroot/cnc/ bash -c \"apt-get update
