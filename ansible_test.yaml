@@ -5,7 +5,8 @@
 
   - script: scripts/t01_touch_ok
     register: t01_touch_ok
+    ignore_errors: True
 
   - name: "create file"
     script: scripts/t01_touch
-    when: t01_touch_ok == "NOTOK"
+    when: t01_touch_ok|failed

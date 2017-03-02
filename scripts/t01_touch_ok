@@ -1,8 +1,4 @@
 #!/bin/bash
 
-if test -e /chroot/cnc/t01-file; then
-    echo -n OK
-else
-    echo -n NOTOK
-fi
+test -e /chroot/cnc/t01-file
 
