@@ -12,6 +12,10 @@
     register: t04_done
     ignore_errors: True
 
+  - script: scripts/t05_done
+    register: t05_done
+    ignore_errors: True
+
 # actual scripts:
 
   - name: "partition the disk"
@@ -32,20 +36,21 @@
 
   - name: "debootstrap debian wheezy"
     script: scripts/05_deboo
-    when: test -e /chroot/cnc/var/spool/
+    when: t05_done|failed
 
   - name: "set up fstab"
     script: scripts/06_fstab
-    when: test -e /chroot/cnc/etc/fstab
+    args: 
+    	  creates: /chroot/cnc/etc/fstab
 
   - name: "install grub"
-    action: "chroot /chroot/cnc/ apt-get install -y grub"
+    command: "chroot /chroot/cnc/ apt-get install -y grub"
   
   - name: "install standard utils"
-    action: "chroot /chroot/cnc/ apt-get install -y screen rlwrap tcpdump strace git"
+    command: "chroot /chroot/cnc/ apt-get install -y screen rlwrap tcpdump strace git"
 
   - name: "install linux cnc kernel"
-    action: "chroot /chroot/cnc/ bash -c \"apt-get update
+    command: "chroot /chroot/cnc/ bash -c \"apt-get update
 apt-get dist-upgrade
 apt-get install linux-image-rt-686-pae
 apt-key adv --keyserver hkp://keys.gnupg.net --recv-key 3cb9fd148f374fef
@@ -55,7 +60,7 @@ apt-get install linuxcnc-uspace\"
 "
 
   - name: install features
-    action: "chroot /chroot/cnc/ bash -c \"apt-get update
+    command: "chroot /chroot/cnc/ bash -c \"apt-get update
 apt-get install python-lxml
 git clone https://github.com/FernV/NativeCAM.git ~/NativeCAM/
 python ~/NativeCAM/setup.py\"
@@ -63,7 +68,7 @@ python ~/NativeCAM/setup.py\"
 
 
   - name: "Reboot"
-    action: reboot now "Ansible provision complete"
+    command: "reboot now \"Ansible provision complete\""
 
 
 # Start LinuxCNC with one of these commands (copy/paste) :
