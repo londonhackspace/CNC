@@ -12,6 +12,10 @@
     register: t04_done
     ignore_errors: True
 
+  - script: scripts/t05_done
+    register: t05_done
+    ignore_errors: True
+
 # actual scripts:
 
   - name: "partition the disk"
