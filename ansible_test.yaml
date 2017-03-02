@@ -3,10 +3,10 @@
 
   tasks:
 
-  - script: scripts/t01_touch_done
+  - script: tscripts/t01_touch_done
     register: t01_touch_done
     ignore_errors: True
 
   - name: "create file"
-    script: scripts/t01_touch
+    script: tscripts/t01_touch
     when: t01_touch_done|failed
