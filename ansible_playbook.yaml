@@ -40,7 +40,6 @@
 
   - name: "set up fstab"
     script: scripts/06_fstab
-    args: 
       creates: /chroot/cnc/etc/fstab
 
   - name: "install grub"
