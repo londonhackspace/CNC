@@ -5,6 +5,7 @@
 * Finish `ansible_playbook.yaml` part 1: until reboot (about done, except for dependency checking needs to be adapted to notice when machine is rebooted, suggestion: create a file on the /chroot/cnc/ somewhere and rely on that file being on the machine without the chroot/cnc prefix after reboot)
 * Finish `ansible_playbook.yaml` part 2: actions after reboot
     * add the the customisation of the Log on screen to ansibile 
+        * https://wiki.debian.org/LightDM
     * Configuration of connection to machine, and spindle settings and storing these 
     * Spindle measurement and recording
     * Logging the Spindle measurement and recording
