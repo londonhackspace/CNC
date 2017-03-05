@@ -2,8 +2,11 @@
 
 ## Todo points
 
-* Finish `ansible_playbook.yaml` part 1: until reboot (about done, except for dependency checking needs to be adapted to notice when machine is rebooted, suggestion: create a file on the /chroot/cnc/ somewhere and rely on that file being on the machine without the chroot/cnc prefix after reboot)
-* Finish `ansible_playbook.yaml` part 2: actions after reboot
+* Finish `ansible_playbook.yaml` stage 1: until reboot 
+    * adapt dependency checking to notice when machine is rebooted, suggestion: create a file on the /chroot/cnc/ somewhere and rely on that file being on the machine without the chroot/cnc prefix after reboot
+    * copy over keys, or set password, before reboot, otherwise can't continue afterwards
+    * need to "wait" until rebooted, i.e. retry logging in, or have the first vs. second stages run separately manually
+* Finish `ansible_playbook.yaml` stage 2: actions after reboot. NOTE: perhaps it would be better to have different .yaml files for the two stages, so that they can be run separately manually. For a start, anyway. (How do you chain the two playbooks though (without merging them into one again) when wanting to have a one-action process in the future? You can always figure this out later though.)
     * add the the customisation of the Log on screen to ansibile 
         * https://wiki.debian.org/LightDM
     * Configuration of connection to machine, and spindle settings and storing these 
