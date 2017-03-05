@@ -4,6 +4,7 @@
 
 * Finish `ansible_playbook.yaml` stage 1: until reboot 
 
+    * `apt-get install openssh-client openssh-server`
     * Install graphical desktop. It's unclear from the LinuxCNC website which desktop they are using; Debian Wheezy uses Gnome by default (*"if you don’t want Gnome desktop select 'Advanced Options > Alternative desktop environments'"* on [Getting LinuxCNC](http://linuxcnc.org/docs/2.7/html/getting-started/getting-linuxcnc.html)). Maybe it's worth installing `aptitude` for installation of desktop stuff since it chooses more packages by default (choses some of the recommended packages, I'm an apt-get guy though so I don't know very well how the selection process in batch mode aptitude works).
         * `apt-get install aptitude`
         * `aptitude install task-desktop task-xfce-desktop lightdm` (leave away task-xfce-desktop if you want Gnome)
