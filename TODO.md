@@ -10,6 +10,7 @@
 
 * Finish `ansible_playbook.yaml` stage 2: actions after reboot. NOTE: perhaps it would be better to have different .yaml files for the two stages, so that they can be run separately manually. For a start, anyway. (How do you chain the two playbooks though (without merging them into one again) when wanting to have a one-action process in the future? You can always figure this out later though.)
 
+    * install graphical desktop, `aptitude install desktop-base` (that package only has `Suggests: gnome | kde-standard | xfce4 | wmaker`, and apt-get doesn't ask you for suggested resolutions, although aptitude probably chooses gnome in this case and LinuxCNC may want xfce insteadl, thus `aptitude install desktop-base xfce` may be it. If chosen correctly it will install `lightdm` which is what I adapted last time, which would make my job easy. Anyway I can always fix that later.)
     * add the the customisation of the Log on screen to ansibile 
         * https://wiki.debian.org/LightDM
     * Configuration of connection to machine, and spindle settings and storing these 
