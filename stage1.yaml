@@ -89,7 +89,9 @@
       chroot /chroot/cnc/ bash -c "
       apt-get install -y python-lxml
       git clone https://github.com/FernV/NativeCAM.git ~/NativeCAM/
-      python ~/NativeCAM/setup.py"
+      cd ~/NativeCAM/
+      git checkout -b local fd53a13bf6a6c7e1811f53a6d0a8ae0bb1b3e02f
+      python setup.py"
 
   - name: "install desktop software"
     command: "chroot /chroot/cnc/ aptitude install -y task-desktop task-xfce-desktop lightdm"
