@@ -42,6 +42,7 @@
     script: scripts/06_fstab
     args: 
       creates: /chroot/cnc/etc/fstab
+# NOTE: creates doesn't actually work; not a problem in this case
 
   - name: "install grub"
     command: "chroot /chroot/cnc/ apt-get install -y grub"
