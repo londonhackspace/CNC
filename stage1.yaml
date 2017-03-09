@@ -119,5 +119,5 @@
     command: "reboot"
 
   - name: "Wait for the machine to come back"
-    local_action: scripts/wait_for root boxfordcnc.lan.london.hackspace.org.uk
+    local_action: shell scripts/wait_for root boxfordcnc.lan.london.hackspace.org.uk
 
