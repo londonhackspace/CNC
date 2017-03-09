@@ -92,7 +92,7 @@
 # XX perms?
 
   - name: "Reboot"
-    command: "reboot now \"Ansible provision complete\""
+    command: "reboot"
 
 
 # Start LinuxCNC with one of these commands (copy/paste) :
