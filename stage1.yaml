@@ -45,8 +45,15 @@
       creates: /chroot/cnc/etc/fstab
 # NOTE: creates doesn't actually work; not a problem in this case
 
+  - name: "bind-mount /dev/pts"
+    shell: |
+      mount --bind /dev/pts /chroot/cnc/dev/pts
+# will re-run the bind mount, we just don't care.
+
   - name: "install grub"
-    command: "chroot /chroot/cnc/ apt-get install -y grub"
+    shell: |
+      mkdir -p /chroot/cnc/boot/grub
+      chroot /chroot/cnc/ apt-get install -y grub
   
   - name: "add LinuxCNC package repository, update package lists"
     shell: |
