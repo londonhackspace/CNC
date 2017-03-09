@@ -16,3 +16,10 @@
 * does that work, how is it meant?
 
     > &lt;bcoca> debug: var=registerdvarname will show everything
+
+
+## Remote maintenance
+
+You can ssh into `chomsky.london.hackspace.org.uk`, then access other machines from there.
+
+Although chomsky doesn't have ansible installed. XXX TODO.
