@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+if [ $# -ne 2 ]; then
+    echo "$0 user host"
+    echo "  Try to 'ssh user@host' until succeeds."
+    exit 1
+fi
+
+user="$1"
+host="$2"
+
+while ! ssh "$user"@"$host" true; do
+    echo "waiting for $host .."
+    sleep 3
+done
