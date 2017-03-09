@@ -58,6 +58,12 @@
       echo "en_GB.UTF-8 UTF-8" > /chroot/cnc/etc/locale.gen 
       chroot /chroot/cnc/ locale-gen
 
+# XXX take hostname from yaml "hosts:" entry or so somehow, like various places now.
+# Also, would this be set by the hackspace ansible scripts anyway?
+  - name: "set hostname"
+    shell: |
+      echo boxfordcnc > /chroot/cnc/etc/hostname
+
   - name: "install grub"
     shell: |
       mkdir -p /chroot/cnc/boot/grub
