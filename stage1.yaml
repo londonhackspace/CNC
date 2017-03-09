@@ -94,7 +94,7 @@
       python setup.py"
 
   - name: "install desktop software"
-    command: "chroot /chroot/cnc/ apt-get install -y task-desktop task-xfce-desktop lightdm"
+    command: "chroot /chroot/cnc/ aptitude install -y task-desktop task-xfce-desktop lightdm"
 
   - name: "add marker for stage 2 detection"
     shell: |
