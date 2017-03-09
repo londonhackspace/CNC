@@ -51,7 +51,7 @@
 # will re-run the bind mount, we just don't care.
 
   - name: "install standard utils and services"
-    command: "chroot /chroot/cnc/ apt-get install -y locales screen rlwrap tcpdump strace git openssh-client openssh-server openntpd vim emacs aptitude"
+    command: "chroot /chroot/cnc/ apt-get install -y locales screen rlwrap tcpdump strace git openssh-client openssh-server openntpd vim emacs aptitude lsof"
 
   - name: "configure locales"
     shell: |
