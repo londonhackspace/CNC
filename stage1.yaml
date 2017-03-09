@@ -1,9 +1,10 @@
 - hosts: boxfordcnc.lan.london.hackspace.org.uk
   remote_user: root
 
+  tasks:
+
 # dependency checking:
 
-  tasks:
   - script: scripts/t03_done
     register: t03_done
     ignore_errors: True
