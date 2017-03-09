@@ -1,0 +1,22 @@
+# This is the main script. It will conditionally run stage1.yaml and/or stage2.yaml.
+
+- hosts: boxfordcnc.lan.london.hackspace.org.uk
+  remote_user: root
+
+  tasks:
+
+  - script: scripts/tstage1_done
+    register: tstage1_done
+    ignore_errors: True
+
+
+# using "local_action:" as a work-around for Ansible 1 which doesn't
+# have "block:"; can be replaced with "block:" once everybody has
+# moved to Ansible 2
+
+  - name "Running stage1.yaml"
+    local_action: "ansible-playbook -i hosts stage1.yaml"
+    when: tstage1_done|failed
+
+  - name "Running stage2.yaml"
+    local_action: "ansible-playbook -i hosts stage2.yaml"

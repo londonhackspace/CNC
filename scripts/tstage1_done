@@ -1,0 +1,6 @@
+#!/bin/bash
+
+test -e /etc/is-CNC-computer
+
+ #  -o /chroot/cnc/etc/is-CNC-computer
+ # but really also want to know whether reboot has been done
