@@ -50,6 +50,9 @@
       mount --bind /dev/pts /chroot/cnc/dev/pts
 # will re-run the bind mount, we just don't care.
 
+  - name: "install standard utils and services"
+    command: "chroot /chroot/cnc/ apt-get install -y locales screen rlwrap tcpdump strace git openssh-client openssh-server openntpd vim emacs aptitude"
+
   - name: "install grub"
     shell: |
       mkdir -p /chroot/cnc/boot/grub
@@ -76,9 +79,6 @@
       apt-get install -y python-lxml
       git clone https://github.com/FernV/NativeCAM.git ~/NativeCAM/
       python ~/NativeCAM/setup.py"
-
-  - name: "install standard utils and services"
-    command: "chroot /chroot/cnc/ apt-get install -y screen rlwrap tcpdump strace git openssh-client openssh-server openntpd vim emacs aptitude"
 
   - name: "install desktop software"
     command: "chroot /chroot/cnc/ apt-get install -y task-desktop task-xfce-desktop lightdm"
