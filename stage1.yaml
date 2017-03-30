@@ -87,6 +87,9 @@
       apt-get install -y linux-image-rt-686-pae
       apt-get install -y linuxcnc-uspace"
 
+# We are choosing that commit from NativeCAM because newer version
+# didn't have the setup.py (and other issue?; it was being worked on
+# to become a Debian package but not there yet?)
   - name: install features
     shell: |
       chroot /chroot/cnc/ bash -c "
