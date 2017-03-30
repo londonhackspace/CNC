@@ -2,5 +2,6 @@
 
 test -e /etc/is-CNC-computer
 
- #  -o /chroot/cnc/etc/is-CNC-computer
- # but really also want to know whether reboot has been done
+ # stage1 is already done except for the reboot if
+ #   test -o /chroot/cnc/etc/is-CNC-computer
+ # but probably really also want to know whether the reboot has been done
