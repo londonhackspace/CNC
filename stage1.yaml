@@ -110,6 +110,8 @@
 # installs more recommended packages by default, which will be
 # preferable.
 #
+# In case this fails (because System-D isn't running in the chroot or
+# some such), move it to stage2.
   - name: "install desktop software"
     command: "chroot /chroot/cnc/ aptitude install -y task-desktop task-xfce-desktop lightdm"
 
