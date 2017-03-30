@@ -99,6 +99,9 @@
       git checkout -b local fd53a13bf6a6c7e1811f53a6d0a8ae0bb1b3e02f
       python setup.py"
 
+# Using aptitude here over apt-get since (IIRC, Christian) aptitude
+# installs more recommended packages by default, which will be
+# preferable.
   - name: "install desktop software"
     command: "chroot /chroot/cnc/ aptitude install -y task-desktop task-xfce-desktop lightdm"
 
