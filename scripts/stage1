@@ -179,7 +179,7 @@ END
 continue_with_install () {
     set -eu
     06_write_fstab
-    07_bind_mount
+    07_bind_mount || true
     08_installs
 }
 
