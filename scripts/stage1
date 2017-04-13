@@ -128,7 +128,9 @@ END
 
     echo "install grub"
     mkdir -p /chroot/cnc/boot/grub
-    chroot /chroot/cnc/ apt-get install -y grub
+    chroot /chroot/cnc/ apt-get install -y grub-pc
+    echo "install grub-setup" # don't forget! uh
+    chroot /chroot/cnc/ grub-setup /dev/sda
   
     echo "add LinuxCNC package repository, update package lists"
     chroot /chroot/cnc/ bash -c "
