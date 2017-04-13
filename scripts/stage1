@@ -194,7 +194,10 @@ mount_filesystems || true
 
 
 if filesystems_mounted; then
-    if [ -e /chroot/cnc/etc/CNC-machine-setup/ ]; then
+    if [ -e /chroot/cnc/etc/CNC-machine-setup/stage1-done ]; then
+	echo "stage 1 already done, exit"
+	exit 0
+    elif [ -e /chroot/cnc/etc/CNC-machine-setup/ ]; then
 	04_swapon
 	if ! debootstrap_done; then
 	    continue_with_install
