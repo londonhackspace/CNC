@@ -92,6 +92,7 @@ END
 07_bind_mount () {
     mount --bind /dev/pts /chroot/cnc/dev/pts
     mount -t proc proc /chroot/cnc/proc
+    mount -t sysfs sysfs /chroot/cnc/sys || true # needed?
 }
 
 08_installs () {
