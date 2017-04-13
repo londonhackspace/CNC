@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # use a directory /chroot/cnc/etc/CNC-machine-setup/ to hold empty
 # files of the parts that have already been done.
 # -- (ok only the dir and then 1 file at the very end for now)
