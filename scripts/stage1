@@ -97,8 +97,9 @@ END
 
 07_bind_mount () {
     set -eu
-    mount --bind /dev/pts /chroot/cnc/dev/pts
-    mount -t proc proc /chroot/cnc/proc
+    mount --bind /dev /chroot/cnc/dev || true
+    mount --bind /dev/pts /chroot/cnc/dev/pts || true
+    mount -t proc proc /chroot/cnc/proc || true
     # is mounting /sys needed or is this done by a package automatically?
     mount -t sysfs sysfs /chroot/cnc/sys || true
 }
