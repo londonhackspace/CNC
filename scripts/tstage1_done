@@ -1,7 +1,7 @@
 #!/bin/bash
 
-test -e /etc/is-CNC-computer
+test -e /etc/CNC-machine-setup
 
  # stage1 is already done except for the reboot if
- #   test -o /chroot/cnc/etc/is-CNC-computer
+ #   test -o /chroot/cnc/etc/CNC-machine-setup
  # but probably really also want to know whether the reboot has been done
