@@ -17,6 +17,7 @@
 
   - name: "Issue reboot"
     script: "scripts/reboot"
+    ignore_errors: True
 
   - name: "Wait for the machine to come back"
     local_action: shell scripts/wait_for root boxfordcnc.lan.london.hackspace.org.uk
