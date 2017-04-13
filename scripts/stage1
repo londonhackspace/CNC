@@ -74,14 +74,13 @@ umount_filesystems () {
 }
 
 debootstrap_done () {
-    # XX is this a good check? created early in the debootstrap
-    # process. But not sure if debootstrap can continue.
-    test -e /chroot/cnc/etc/debian_version
+    test -e /chroot/cnc/etc/CNC-machine-setup/debootstrap_done
 }
 
 05_debootstrap () {
     # XXX should we apt-get update first?
     debootstrap wheezy /chroot/cnc/
+    touch /chroot/cnc/etc/CNC-machine-setup/debootstrap_done
 }
 
 06_write_fstab () {
