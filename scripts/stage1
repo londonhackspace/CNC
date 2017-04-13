@@ -1,6 +1,11 @@
 #!/bin/bash
 
+# Log to a file in /tmp to be able to see what's going on.
+# Since Ansible only shows the output once it has finished.
+
+{
 set -eu
+set -x
 
 01_partition_disk () {
 set -eu
@@ -190,3 +195,6 @@ if filesystems_mounted; then
 else
     continue_with_partitioning
 fi
+
+} | tee `mktemp`
+
