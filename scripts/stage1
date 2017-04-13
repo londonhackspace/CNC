@@ -211,5 +211,5 @@ else
     continue_with_partitioning
 fi
 
-} | tee `mktemp -p /root/stage1-logs`
+} 2>&1 | tee `mktemp -p /root/stage1-logs`
 
