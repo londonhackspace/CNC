@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cat /proc/swaps |grep -q ^/dev/sda2
-
