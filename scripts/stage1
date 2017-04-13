@@ -213,7 +213,7 @@ if filesystems_mounted; then
 	echo "stage 1 already done, exit"
 	exit 0
     elif [ -e /chroot/cnc/etc/CNC-machine-setup/ ]; then
-	04_swapon
+	04_swapon || true
 	if debootstrap_done; then
 	    continue_with_install
 	else
