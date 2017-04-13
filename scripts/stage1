@@ -17,8 +17,8 @@ set -eu
 set -x
 
 01_partition_disk () {
-set -eu
-cat <<END | fdisk /dev/sda
+    set -eu
+    cat <<END | fdisk /dev/sda
 o
 n
 p
@@ -40,6 +40,7 @@ END
 }
 
 02_create_filesystems () {
+    set -eu
     mkfs.ext4 -F /dev/sda1
     mkswap /dev/sda2
     mkfs.ext4 -F /dev/sda3
@@ -80,6 +81,7 @@ debootstrap_done () {
 }
 
 05_debootstrap () {
+    set -eu
     # XXX should we apt-get update first?
     debootstrap wheezy /chroot/cnc/
     touch /chroot/cnc/etc/CNC-machine-setup/debootstrap_done
@@ -93,12 +95,15 @@ END
 }
 
 07_bind_mount () {
+    set -eu
     mount --bind /dev/pts /chroot/cnc/dev/pts
     mount -t proc proc /chroot/cnc/proc
-    mount -t sysfs sysfs /chroot/cnc/sys || true # needed?
+    # is mounting /sys needed or is this done by a package automatically?
+    mount -t sysfs sysfs /chroot/cnc/sys || true
 }
 
 08_installs () {
+    set -eu
     echo "install standard utils and services"
     chroot /chroot/cnc/ apt-get install -y locales screen rlwrap tcpdump strace git openssh-client openssh-server openntpd vim emacs aptitude lsof
     # make sure we've still got ssh on the host? (Probably unnecessary
@@ -172,17 +177,20 @@ END
 # -------------------------------------------------------------------
 
 continue_with_install () {
+    set -eu
     06_write_fstab
     07_bind_mount
     08_installs
 }
 
 continue_with_debootstrap () {
+    set -eu
     05_debootstrap
     continue_with_install
 }
 
 continue_with_partitioning () {
+    set -eu
     01_partition_disk
     02_create_filesystems
     mount_filesystems
