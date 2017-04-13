@@ -1,0 +1,7 @@
+#!/bin/bash
+
+reboot
+while true; do
+    echo "waiting for
+    sleep 1
+done

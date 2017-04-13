@@ -14,7 +14,7 @@
 # XX perms?
 
   - name: "Issue reboot"
-    command: "reboot"
+    script: "scripts/reboot"
 
   - name: "Wait for the machine to come back"
     local_action: shell scripts/wait_for root boxfordcnc.lan.london.hackspace.org.uk
