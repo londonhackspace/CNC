@@ -74,6 +74,8 @@ umount_filesystems () {
 }
 
 debootstrap_done () {
+    # XX is this a good check? created early in the debootstrap
+    # process. But not sure if debootstrap can continue.
     test -e /chroot/cnc/etc/debian_version
 }
 
@@ -169,10 +171,14 @@ END
 # -------------------------------------------------------------------
 
 continue_with_install () {
-    05_debootstrap
     06_write_fstab
     07_bind_mount
     08_installs
+}
+
+continue_with_debootstrap () {
+    05_debootstrap
+    continue_with_install
 }
 
 continue_with_partitioning () {
@@ -181,7 +187,7 @@ continue_with_partitioning () {
     mount_filesystems
     mark_filesystem
     04_swapon
-    continue_with_install
+    continue_with_debootstrap
 }
 
 if [ -d /etc/CNC-machine-setup ]; then
@@ -199,8 +205,10 @@ if filesystems_mounted; then
 	exit 0
     elif [ -e /chroot/cnc/etc/CNC-machine-setup/ ]; then
 	04_swapon
-	if ! debootstrap_done; then
+	if debootstrap_done; then
 	    continue_with_install
+	else
+	    continue_with_debootstrap
 	fi
     else
 	echo "The mounted filesystem is not a CNC-machine setup, hence start with partitioning anyway."
