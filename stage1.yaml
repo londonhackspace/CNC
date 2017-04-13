@@ -27,7 +27,7 @@
     script: scripts/02_filesys
     when: t03_done|failed
 
-  - name: "mount partition"
+  - name: "mount partitions"
     script: scripts/03_mount
     when: t03_done|failed
 
