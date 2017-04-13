@@ -7,6 +7,9 @@
 # Log to a file in /tmp to be able to see what's going on.
 # Since Ansible only shows the output once it has finished.
 
+# XX mis-use filesystem on network image to keep the logs. OK?
+mkdir -p /root/stage1-logs
+
 {
 set -eu
 set -x
@@ -204,5 +207,5 @@ else
     continue_with_partitioning
 fi
 
-} | tee `mktemp`
+} | tee `mktemp -p /root/stage1-logs`
 
