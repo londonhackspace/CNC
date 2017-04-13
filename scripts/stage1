@@ -92,6 +92,7 @@ debootstrap_done () {
 proc            /proc           proc    defaults        0       0
 /dev/sda1       /boot           ext4    defaults        0       1
 END
+    chroot /chroot/cnc ln -s /proc/mounts /etc/mtab
 }
 
 07_bind_mount () {
