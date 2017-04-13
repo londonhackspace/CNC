@@ -136,7 +136,7 @@ END
 
     echo "install Linux CNC kernel and userspace"
     chroot /chroot/cnc/ bash -c "
-      apt-get dist-upgrade
+      apt-get dist-upgrade -y
       apt-get install -y linux-image-rt-686-pae
       apt-get install -y linuxcnc-uspace"
 
