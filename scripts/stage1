@@ -142,6 +142,10 @@ END
     echo "install grub"
     mkdir -p /chroot/cnc/boot/grub
     chroot /chroot/cnc/ apt-get install -y grub-pc
+
+    echo "explicitely run grub-install" # in case grub-pc was installed earlier and ran it already
+    chroot /chroot/cnc/ grub-install /dev/sda
+
     echo "install grub-setup" # don't forget! uh
     chroot /chroot/cnc/ grub-setup /dev/sda
   
