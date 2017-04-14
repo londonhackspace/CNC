@@ -8,6 +8,8 @@
     
     * Machine doesn't finish booting yet after running through stage1 for some reason. Investigate and fix.
 
+    * wait_for still fails to work, bah 
+     
 * Finish `ansible_playbook.yaml` stage 2: actions after reboot. NOTE: perhaps it would be better to have different .yaml files for the two stages, so that they can be run separately manually. For a start, anyway. (How do you chain the two playbooks though (without merging them into one again) when wanting to have a one-action process in the future? You can always figure this out later though.)
 
     * add the the customisation of the Log on screen to ansibile 
