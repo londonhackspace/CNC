@@ -126,12 +126,6 @@ END
     echo "set hostname"
     echo boxfordcnc > /chroot/cnc/etc/hostname
 
-    echo "install grub"
-    mkdir -p /chroot/cnc/boot/grub
-    chroot /chroot/cnc/ apt-get install -y grub-pc
-    echo "install grub-setup" # don't forget! uh
-    chroot /chroot/cnc/ grub-setup /dev/sda
-  
     echo "add LinuxCNC package repository, update package lists"
     chroot /chroot/cnc/ bash -c "
       apt-key adv --keyserver hkp://keys.gnupg.net --recv-key 3cb9fd148f374fef
@@ -145,6 +139,12 @@ END
       apt-get install -y linux-image-rt-686-pae
       apt-get install -y linuxcnc-uspace"
 
+    echo "install grub"
+    mkdir -p /chroot/cnc/boot/grub
+    chroot /chroot/cnc/ apt-get install -y grub-pc
+    echo "install grub-setup" # don't forget! uh
+    chroot /chroot/cnc/ grub-setup /dev/sda
+  
 # We are choosing that commit from NativeCAM because newer version
 # didn't have the setup.py (and other issue?; it was being worked on
 # to become a Debian package but not there yet?)
