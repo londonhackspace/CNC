@@ -25,7 +25,7 @@ used to install other machines with (variants of) Debian, too.
 1. select image "Wheezy i386 diskless" from list
     * note, this is to be changed to a special image for this purpuse. See "How to add a new netboot image" if not done.
 1. `ssh root@boxfordcnc` (using ssh key, run once first to confirm ssh server key), or/then:
-1. for admins: run stage 1 only?: `ANSIBLE_HOSTS=cnc ansible-playbook -i inventory setup1.yaml`
+1. for admins: run stage 1 only?: `ANSIBLE_HOSTS=cnc ansible-playbook -i inventory stage1.yaml`
 1. otherwise: run (UNFINISHED) `ansible-playbook setup.yaml -i inventory`
 
 setup.yaml runs both stage1.yaml and stage2.yaml.
