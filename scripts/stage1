@@ -90,6 +90,7 @@ debootstrap_done () {
     touch /chroot/cnc/etc/CNC-machine-setup/debootstrap_done
 }
 
+# XX parametrize /dev/sda
 06_write_fstab () {
     cat <<END > /chroot/cnc/etc/fstab
 proc            /proc           proc    defaults        0       0
