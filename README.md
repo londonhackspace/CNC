@@ -22,7 +22,7 @@ used to install other machines with (variants of) Debian, too.
 
 1. turn on machine you want to be reinstalled
 1. hit F12 key so that boot options come up, select 'network card'
-1. select image "Wheezy AMD64 diskless" from list
+1. select image "Wheezy i386 diskless" from list
     * note, this is to be changed to a special image for this purpuse. See "How to add a new netboot image" if not done.
 1. `ssh root@boxfordcnc` (using ssh key, run once first to confirm ssh server key), or/then:
 1. for admins: run stage 1 only?: `ANSIBLE_HOSTS=cnc ansible-playbook -i inventory setup1.yaml`
