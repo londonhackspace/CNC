@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+fqhostname="$1"
+
+hostname=`echo "$fqhostname" | sed 's/\..*//'`
+
+
 # make sure no questions will be asked
 export DEBIAN_FRONTEND=noninteractive
 
@@ -85,7 +90,7 @@ debootstrap_done () {
 
 05_debootstrap () {
     set -eu
-    # XXX should we apt-get update first?
+    # XX should we apt-get update first?
     debootstrap wheezy /chroot/cnc/
     touch /chroot/cnc/etc/CNC-machine-setup/debootstrap_done
 }
@@ -122,10 +127,8 @@ END
     echo "en_GB.UTF-8 UTF-8" > /chroot/cnc/etc/locale.gen 
     chroot /chroot/cnc/ locale-gen
 
-# XXX take hostname from yaml "hosts:" entry or so somehow, like various places now.
-# Also, would this be set by the hackspace ansible scripts anyway?
     echo "set hostname"
-    echo boxfordcnc > /chroot/cnc/etc/hostname
+    echo "$hostname" > /chroot/cnc/etc/hostname
 
     echo "add LinuxCNC package repository, update package lists"
     chroot /chroot/cnc/ bash -c "

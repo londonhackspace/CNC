@@ -4,7 +4,7 @@
   tasks:
 
   - name: "run stage1 script"
-    script: scripts/stage1
+    script: scripts/stage1 {{ inventory_hostname }}
 
 # XXX ^ why does Ansible not stop (or detect) failures of the stage1 script here??
 
