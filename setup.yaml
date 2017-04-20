@@ -15,8 +15,8 @@
 # moved to Ansible 2
 
   - name: "Running stage1.yaml"
-    local_action: "shell ansible-playbook -i hosts stage1.yaml"
+    local_action: "shell ansible-playbook -i inventory stage1.yaml"
     when: tstage1_done|failed
 
   - name: "Running stage2.yaml"
-    local_action: "shell ansible-playbook -i hosts stage2.yaml"
+    local_action: "shell ansible-playbook -i inventory stage2.yaml"
