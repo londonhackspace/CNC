@@ -4,14 +4,15 @@
 
 * Finish `ansible_playbook.yaml` stage 1: until reboot 
 
-    * Do we also need NFS? Not sure which packages that requires. This might be set up by the main hackspace ansible scripts though, so just leave it for now.
-    
-    * Machine doesn't finish booting yet after running through stage1 for some reason. Investigate and fix.
+    * [scripts/stage1](scripts/stage1) currently hard codes the host name (`boxfordcnc`):
+        * How are we going to tell Ansible which host(s) to install? Probably via Ansible's `hosts:` thingie, pass this into the script call (argument, env var?)
+    * It also hard codes the disk name (`/dev/sda`). Should this be a parameter, or should it ask for confirmation? By way of a wrapper script around calling Ansible?
+    * `wait_for` for waiting after reboot still fails to work properly (...?, and how to handle change of ssh host key)
 
-    * wait_for still fails to work, bah 
-     
 * Finish `ansible_playbook.yaml` stage 2: actions after reboot. NOTE: perhaps it would be better to have different .yaml files for the two stages, so that they can be run separately manually. For a start, anyway. (How do you chain the two playbooks though (without merging them into one again) when wanting to have a one-action process in the future? You can always figure this out later though.)
 
+    * Do we need NFS?
+    * running the general hackspace setup: document (needs a Hackspace Admin, and they will need documentation for how to run that step--probably including stage1 as new machines need their MAC address and hostname recorded (probably) before stage1 will work (which is still unfinished in this regard))
     * add the the customisation of the Log on screen to ansibile 
         * https://wiki.debian.org/LightDM
     * Configuration of connection to machine, and spindle settings and storing these 
@@ -21,7 +22,7 @@
 
 * what was the `bash` file in the repository for? Delete it?
 
-* make copying the authorized_keys file also run after the machine is installed so that future changes to authorized_keys are synchronized (stage 2?). Be careful not to overwrite keys that have been added to the machine but not the ansible repository?
+* make copying the authorized_keys file also run after the machine is installed so that future changes to authorized_keys are synchronized (stage 2?). Be careful not to overwrite keys that have been added to the machine but not the ansible repository? It's currently part of `stage1.yaml`.
 
 ## Spindle logging
 
