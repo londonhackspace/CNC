@@ -4,6 +4,19 @@ These are ansible scripts specific to the CNC machines. They are in a
 separate repository so that they can be updated separately from the
 general hackspace admins. 
 
+This includes two stages: stage 1 installs LinuxCNC onto the machine
+(fully automatically) while it (currently) runs off a net boot image,
+then reboots it to load it. Stage 2 applies changes while LinuxCNC
+running (and is useful for changes to previously installed machines,
+too).
+
+Stage 1 is mostly implemented as a Bash script in
+[`scripts/stage1`](scripts/stage1) (an initial attempt to do all steps
+in stage 1 in Ansible led to the conclusion that Ansible isn't well
+suited for that, since dependency checking and continuation of the
+install is relatively complex and such checks very convoluted to write
+in Ansible). This step could (with slight adaptions) potentially be
+used to install other machines with (variants of) Debian, too.
 
 ## How to use
 
