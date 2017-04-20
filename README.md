@@ -25,7 +25,7 @@ used to install other machines with (variants of) Debian, too.
 1. select image "Wheezy AMD64 diskless" from list
     * note, this is to be changed to a special image for this purpuse. See "How to add a new netboot image" if not done.
 1. `ssh root@boxfordcnc` (using ssh key, run once first to confirm ssh server key), or/then:
-1. `ansible-playbook setup.yaml -i hosts`
+1. `ansible-playbook setup.yaml -i inventory`
 
 setup.yaml runs both stage1.yaml and stage2.yaml.
 
