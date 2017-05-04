@@ -6,8 +6,6 @@
   - name: "run stage1 script"
     script: scripts/stage1 {{ inventory_hostname }}
 
-# XXX ^ why does Ansible not stop (or detect) failures of the stage1 script here??
-
   - name: "add authorized keys before rebooting"
     copy: 
       src: authorized_keys
