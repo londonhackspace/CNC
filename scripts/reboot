@@ -1,7 +1,10 @@
 #!/bin/bash
 
+set -eu
+
 reboot
+
 while true; do
-    echo "waiting for
+    echo "waiting for machine to shut down..."
     sleep 1
 done
