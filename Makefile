@@ -3,10 +3,10 @@
 # should do the same. ?
 
 
-all: stage1 stage2
+all: stage1 stage2b
 
 stage1:
 	ansible-playbook -i inventory stage1.yaml
 
-stage2:
-	ansible-playbook -i inventory stage2.yaml
+stage2b:
+	ansible-playbook -i inventory stage2b.yaml

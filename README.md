@@ -8,7 +8,9 @@ This includes two stages: stage 1 installs LinuxCNC onto the machine
 (fully automatically) while it (currently) runs off a net boot image,
 then reboots it to load it. Stage 2 applies changes while LinuxCNC
 running (and is useful for changes to previously installed machines,
-too).
+too). Stage 2 really consists of two parts, Stage 2a which is the
+general Hackspace setup, and Stage 2b which is the CNC specific
+things.
 
 Stage 1 is mostly implemented as a Bash script in
 [`scripts/stage1`](scripts/stage1) (an initial attempt to do all steps

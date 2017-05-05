@@ -1,4 +1,6 @@
 # This is the main script. It will conditionally run stage1.yaml and/or stage2.yaml.
+# XXXX this needs updating, currently using Makefile instead
+
 
 - hosts: boxfordcnc.lan.london.hackspace.org.uk
   remote_user: root
