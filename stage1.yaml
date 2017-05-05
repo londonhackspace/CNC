@@ -3,20 +3,10 @@
 
   tasks:
 
-  - name: "run stage1 script"
-    script: scripts/stage1 {{ inventory_hostname }}
+  - name: "run stage1"
+    local_action: shell localscripts/stage1 {{ inventory_hostname }}
 
-  - name: "add authorized keys before rebooting"
-    copy: 
-      src: authorized_keys
-      dest: /chroot/cnc/root/.ssh/
-
-# XX perms?
-
-  - name: "Issue reboot"
-    script: "scripts/reboot"
-    ignore_errors: True
-
-  - name: "Wait for the machine to come back"
-    local_action: shell scripts/wait_for root boxfordcnc.lan.london.hackspace.org.uk
+#XX solve this, including swap of ssh keys, or, .ssh/config magic/switchery
+#  - name: "Wait for the machine to come back"
+#    local_action: shell scripts/wait_for root boxfordcnc.lan.london.hackspace.org.uk
 

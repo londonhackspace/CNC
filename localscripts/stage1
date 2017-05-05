@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# This is run locally, as opposed to scripts/stage1 which is run remotely
+
+set -euo pipefail
+IFS=
+
+fqhostname="$1"
+
+#hostname=`echo "$fqhostname" | sed 's/\..*//'`
+
+
+quote() {
+    printf '%q' "$1"
+}
+
+set -x
+
+rtmp=`ssh root@"$fqhostname" 'mktemp -d'`
+
+scp scripts/stage1 authorized_keys root@"$fqhostname":"$rtmp"/
+
+ssh root@"$fqhostname" "$(quote "$rtmp")/stage1 $(quote "$fqhostname")"
+
