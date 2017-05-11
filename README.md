@@ -32,7 +32,7 @@ used to install other machines with (variants of) Debian, too.
 
 setup.yaml runs both stage1.yaml and stage2.yaml.
 
-So see what's going on in stage1, ssh root@<machine> then `cd stage1-logs; ls -lrt; less tmp.....`. This directory is currently persisted on the network image that's used, which may not persist or even be writable in the future. In case this happens, revert commit 184eeec28f771bec11b2c12a50f9b9dba7b9abe0.
+So see what's going on in stage1, `ssh root@<machine>` then `cd stage1-logs; ls -lrt; less tmp.....`. This directory is currently persisted on the network image that's used, which may not persist or even be writable in the future. In case this happens, revert commit 184eeec28f771bec11b2c12a50f9b9dba7b9abe0.
 
 
 ## How to add a new netboot image
