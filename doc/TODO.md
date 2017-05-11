@@ -1,5 +1,10 @@
 # To do
 
+## Ask Jasper
+
+* logins, admin, LDAP setup (just, get us to run ansible again)
+* how to query email address?
+
 ## Todo points
 
 * Finish `ansible_playbook.yaml` stage 1: until reboot 
