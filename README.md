@@ -25,16 +25,34 @@ used to install other machines with (variants of) Debian, too.
 
 ## How to use
 
-1. turn on machine you want to be reinstalled
-1. hit F12 key so that boot options come up, select 'network card'
-1. select image "Wheezy i386 diskless" from list
-    * note, this is to be changed to a special image for this purpuse. See "Add a new netboot image" in [TODO](doc/TODO.md) if not done.
-1. `ssh root@boxfordcnc` (using ssh key, run once first to confirm ssh server key), or/then:
-1. for admins: run stage 1 only?: `ANSIBLE_HOSTS=cnc ansible-playbook -i inventory stage1.yaml`
-1. otherwise: run (UNFINISHED) `ansible-playbook setup.yaml -i inventory`
+### Add a new machine
 
-setup.yaml runs both stage1.yaml and stage2.yaml.
+1. any CNC admin: figure out the MAC address of the machine to be (re)installed
 
-So see what's going on in stage1, `ssh root@<machine>` then `cd stage1-logs; ls -lrt; less tmp.....`. This directory is currently persisted on the network image that's used, which may not persist or even be writable in the future. In case this happens, revert commit 184eeec28f771bec11b2c12a50f9b9dba7b9abe0.
+1. a hackspace admin: 
 
+    * add IP and hostname for that MAC address
+    * add the machine to the set of hosts to receive general Hackspace modifications
+
+1. any CNC admin: turn on / reset the machine you want to be (re)installed. Hit F12 key so that boot options come up, select 'network card' (this works for the "Optiplex 760" (boxfordcnc), will be different for other machines). Select image "Wheezy i386 diskless" from list (*NOTE*, this is to be changed to a special image for this purpuse. See "Add a new netboot image" in [TODO](doc/TODO.md) if not done.)
+
+    1. `ssh root@<hostname>` (`<hostname` being e.g. `boxfordcnc`, using ssh key, run once first to confirm that you can log in, and to add the ssh server key)
+    1. run `make stage1` (or `make`) (TODO: how to specify host in question?)
+
+        * So see what's going on in stage1, `ssh root@<hostname>` then `cd stage1-logs; ls -lrt; less tmp.....`. This directory is currently persisted on the network image that's used, which may not persist or even be writable in the future. In case this happens, revert commit 184eeec28f771bec11b2c12a50f9b9dba7b9abe0.
+
+1. a hackspace admin: run the general Hackspace scripts on the machine (there will be no `make stage2a` here, OK?)
+
+1. any CNC admin: run `make stage2b` (or just `make`) (TODO)
+
+
+### Update all existing machines
+
+For the CNC specific stuff:
+
+1. any CNC admin: run `make stage2b` (or just `make`) (TODO)
+
+For the general Hackspace stuff: the responsible Hackspace admin will
+run the updates on all machines automatically (no further thinking
+needed).
 
