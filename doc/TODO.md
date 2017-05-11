@@ -50,3 +50,18 @@ Either/and:
 ## Cosmetics
 
 * Is there an ansible module to install packages? Doesn't really matter either way though since LinuxCNC is Debian only anyway.
+
+
+## Add a new netboot image
+
+Someone with admin perms on `adminstuff` should to do this:
+
+    # debootstrap into /space/exports/export/images/$NEWDIR (?, or thereabouts)
+    ssh you@adminstuff
+    cd /tftpboot/pxelinux.cfg
+    less default # look at "wheezy_amd64_diskless"
+    # make directory /tftpboot/$NEWDIR
+    # copy /tftpboot/amd64-wheezy/update.sh there, adapt, run it.
+    vi default
+    # add entry similar to "wheezy_amd64_diskless"
+    
