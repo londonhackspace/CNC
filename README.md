@@ -31,7 +31,8 @@ used to install other machines with (variants of) Debian, too.
 
 1. a hackspace admin: 
 
-    * add IP and hostname for that MAC address
+    * log into boole `cd /etc/bind; less README` - git repo
+    * add IP and hostname for that MAC address `cd /etc/dhcp; vim dhcp.conf` - git repo
     * add the machine to the set of hosts to receive general Hackspace modifications
     * log into adminstuff, `cd /etc/ansible; ansible-playbook -D -l "cnc" lhs/site.yml`
 
