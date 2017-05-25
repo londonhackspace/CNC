@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=
+
+fqhostname="$1"
+#hostname=`echo "$fqhostname" | sed 's/\..*//'`
+
+user="${2-root}"
+
+# Since I can't sequence these easily in Ansible (would require top
+# level tasks, and, register and when hacks):
+#
+#     - copy:
+#         src: greeter.ui.diff
+#         dest: /usr/share/lightdm-gtk-greeter
+#     - shell: |
+#         set -eux
+#         dpkg-divert --local --rename /usr/share/lightdm-gtk-greeter/greeter.ui 
+#         cd /usr/share/lightdm-gtk-greeter
+#         cp greeter.ui.distrib greeter.ui
+#         patch -p0 < greeter.ui.diff 
+
+set -x
+scp greeter.ui.diff "$user"@"$fqhostname":/usr/share/lightdm-gtk-greeter/
+
+set +x
+ssh "$user"@"$fqhostname" 'bash -c '\''
+     set -eux
+     dpkg-divert --local --rename /usr/share/lightdm-gtk-greeter/greeter.ui 
+     cd /usr/share/lightdm-gtk-greeter
+     cp greeter.ui.distrib greeter.ui
+     patch -p0 < greeter.ui.diff 
+'\'
+
+
