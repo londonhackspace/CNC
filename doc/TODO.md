@@ -54,7 +54,7 @@ Either/and:
 
 ## Add a new netboot image
 
-Someone with admin perms on `adminstuff` should to do this:
+Someone with admin perms on `adminstuff` should create a new netboot image just for our purpose, since we shouldn't hijack the other one (root pw / ssh keys, and log files from [scripts/stage1](scripts/stage1) written to `/root/...`):
 
     # debootstrap into /space/exports/export/images/$NEWDIR (?, or thereabouts)
     ssh you@adminstuff
