@@ -20,6 +20,4 @@
 
 ## Remote maintenance
 
-You can ssh into `chomsky.london.hackspace.org.uk`, then access other machines from there.
-
-Although chomsky doesn't have ansible installed. XXX TODO.
+You can ssh into `chomsky.london.hackspace.org.uk`, then access other machines from there. (`chomsky` doesn't have ansible installed. But you can reach `adminstuff` from there.)
