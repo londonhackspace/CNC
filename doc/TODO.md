@@ -3,7 +3,7 @@
 ## Ask Jasper
 
 * logins, admin, LDAP setup (just, get us to run ansible again)
-* how to query email address?
+* how to query email address? -> just send to local user name, it will deliver to user's email
 
 ## Todo points
 
@@ -18,8 +18,6 @@
 
     * Do we need NFS?
     * running the general hackspace setup: document (needs a Hackspace Admin, and they will need documentation for how to run that step--probably including stage1 as new machines need their MAC address and hostname recorded (probably) before stage1 will work (which is still unfinished in this regard))
-    * add the the customisation of the Log on screen to ansibile 
-        * https://wiki.debian.org/LightDM
     * Configuration of connection to machine, and spindle settings and storing these 
     * Spindle measurement and recording
     * Logging the Spindle measurement and recording
