@@ -8,6 +8,17 @@
       src: authorized_keys
       dest: /root/.ssh/
 
+  - name: "change login screen"
+    tasks:
+    - copy:
+        src: greeter.ui.diff
+        dest: /usr/share/lightdm-gtk-greeter
+    - shell: |
+        set -eux
+        dpkg-divert --local --rename /usr/share/lightdm-gtk-greeter/greeter.ui 
+        cd /usr/share/lightdm-gtk-greeter
+        cp greeter.ui.distrib greeter.ui
+        patch -p0 < greeter.ui.diff 
 
 
 # Start LinuxCNC with one of these commands (copy/paste) :

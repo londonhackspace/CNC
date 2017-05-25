@@ -1,0 +1,46 @@
+--- greeter.ui.distrib	2012-06-22 08:01:55.000000000 +0100
++++ greeter.ui	2016-06-21 01:09:13.176775620 +0100
+@@ -52,6 +52,25 @@
+               </packing>
+             </child>
+             <child>
++              <object class="GtkLabel" id="hackspacenotification_label">
++                <property name="visible">True</property>
++                <property name="can_focus">False</property>
++                <property name="label" comments="This is the text shown for users of the hackspace 'gantry' CNC machine">
++
++&#8226; You are not permitted to use this machine unless you have been inducted on it.
++&#8226; You must run the vacuum preferably on the spindle when running this machine.
++&#8226; You must pay for your usage.
++   Payment to account 50365968 sort code 77 91 61. The reference to use
++   is your LDAP name or your LHS Membership Number.
++            </property>
++              </object>
++              <packing>
++                <property name="expand">True</property>
++                <property name="fill">True</property>
++                <property name="position">2</property>
++              </packing>
++            </child>
++            <child>
+               <object class="GtkTreeView" id="user_treeview">
+                 <property name="can_focus">True</property>
+                 <property name="model">user_liststore</property>
+@@ -67,7 +86,7 @@
+               <packing>
+                 <property name="expand">True</property>
+                 <property name="fill">True</property>
+-                <property name="position">2</property>
++                <property name="position">3</property>
+               </packing>
+             </child>
+             <child>
+@@ -193,7 +212,7 @@
+               <packing>
+                 <property name="expand">False</property>
+                 <property name="fill">True</property>
+-                <property name="position">3</property>
++                <property name="position">4</property>
+               </packing>
+             </child>
+           </object>
