@@ -40,7 +40,7 @@ used to install other machines with (variants of) Debian, too.
         * `ssh $HOSTNAME`, confirm ssh fingerprint 
         
             * If you get fingerprint *change* warnings, see the section "Updating sshfp records" in 
-              [londonhackspace/ansible/README](https://github.com/londonhackspace/ansible/)
+              [londonhackspace/ansible/README](https://github.com/londonhackspace/ansible/) (note: this page is only accessible if you're logged into Github and are a hackspace admin)
             
         * `cd /etc/ansible; ansible-playbook -D -l "cnc" lhs/site.yml`
 
