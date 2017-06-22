@@ -12,12 +12,19 @@
 * Finish `ansible_playbook.yaml` stage 2: actions after reboot. NOTE: perhaps it would be better to have different .yaml files for the two stages, so that they can be run separately manually. For a start, anyway. (How do you chain the two playbooks though (without merging them into one again) when wanting to have a one-action process in the future? You can always figure this out later though.)
 
     * How to send mail to the user? Just send to local user name, the machine will forward it to the user's email.
-    * Do we need NFS?
+    * Do we need NFS? Yes,
+        * Ask Jasper to verify: seems only admins or so are there currently? Or can *all* hackspace members log in with LDAP and automatically get a home folder that we see here?
     * running the general hackspace setup: document (needs a Hackspace Admin, and they will need documentation for how to run that step--probably including stage1 as new machines need their MAC address and hostname recorded (probably) before stage1 will work (which is still unfinished in this regard))
     * Configuration of connection to machine, and spindle settings and storing these 
+    * Confirm setup of local groups for access etc (all hackspace members can log onto the machine, but only allowed members have access rights) -> needs to be unix groups local to each machine, since LDAP groups are restricted by space, and separate memberships are needed for each machine anyway
+        * How?
+            * CNC admin
+                * can add and remove users 
+            * CNC users
+        * Ask Jasper: ideas for solution by LDAP, or store in MySQL and resolve usernames to UIDs when running ansible and set those in the /etc/groups file?
     * Spindle measurement and recording
     * Logging the Spindle measurement and recording
-    * Confirm setup of local groups for access etc 
+        * via MySQL in a new VM. Ask Jasper how.
 
 * what was the `bash` file in the repository for? Delete it?
 
