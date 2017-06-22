@@ -1,10 +1,5 @@
 # To do
 
-## Ask Jasper
-
-* logins, admin, LDAP setup (just, get us to run ansible again)
-* how to query email address? -> just send to local user name, it will deliver to user's email
-
 ## Todo points
 
 * Finish `ansible_playbook.yaml` stage 1: until reboot 
@@ -16,6 +11,7 @@
 
 * Finish `ansible_playbook.yaml` stage 2: actions after reboot. NOTE: perhaps it would be better to have different .yaml files for the two stages, so that they can be run separately manually. For a start, anyway. (How do you chain the two playbooks though (without merging them into one again) when wanting to have a one-action process in the future? You can always figure this out later though.)
 
+    * How to send mail to the user? Just send to local user name, the machine will forward it to the user's email.
     * Do we need NFS?
     * running the general hackspace setup: document (needs a Hackspace Admin, and they will need documentation for how to run that step--probably including stage1 as new machines need their MAC address and hostname recorded (probably) before stage1 will work (which is still unfinished in this regard))
     * Configuration of connection to machine, and spindle settings and storing these 
