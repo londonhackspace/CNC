@@ -14,7 +14,6 @@
     * (How to send mail to the user? Just send to local user name, the machine will forward it to the user's email.)
     * Do we need NFS? Yes,
         * Ask Jasper to verify: seems only admins or so are there currently? Or can *all* hackspace members log in with LDAP and automatically get a home folder that we see here?
-    * XXX running the general hackspace setup: document (needs a Hackspace Admin, and they will need documentation for how to run that step--probably including stage1 as new machines need their MAC address and hostname recorded (probably) before stage1 will work (which is still unfinished in this regard))
     * Configuration of connection to machine, and spindle settings and storing these (in Ansible)
     * Confirm setup of local groups for access etc (all hackspace members can log onto the machine, but only allowed members have access rights) -> needs to be unix groups local to each machine, since LDAP groups are restricted by space, and separate memberships are needed for each machine anyway
         * How:
