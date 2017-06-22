@@ -2,14 +2,14 @@
 
 ## Todo points
 
-* Finish `ansible_playbook.yaml` stage 1: until reboot 
+* Christian: Finish `ansible_playbook.yaml` stage 1: until reboot 
 
     * [scripts/stage1](scripts/stage1) currently hard codes the host name (`boxfordcnc`):
         * How are we going to tell Ansible which host(s) to install? Probably via Ansible's `hosts:` thingie, pass this into the script call (argument, env var?)
     * It also hard codes the disk name (`/dev/sda`). Should this be a parameter, or should it ask for confirmation? By way of a wrapper script around calling Ansible?
     * `wait_for` for waiting after reboot still fails to work properly (...?, and how to handle change of ssh host key)
 
-* Finish `ansible_playbook.yaml` stage 2: actions after reboot. NOTE: perhaps it would be better to have different .yaml files for the two stages, so that they can be run separately manually. For a start, anyway. (How do you chain the two playbooks though (without merging them into one again) when wanting to have a one-action process in the future? You can always figure this out later though.)
+* Harry: Finish `ansible_playbook.yaml` stage 2: actions after reboot. NOTE: perhaps it would be better to have different .yaml files for the two stages, so that they can be run separately manually. For a start, anyway. (How do you chain the two playbooks though (without merging them into one again) when wanting to have a one-action process in the future? You can always figure this out later though.)
 
     * How to send mail to the user? Just send to local user name, the machine will forward it to the user's email.
     * Do we need NFS? Yes,
