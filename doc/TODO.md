@@ -26,8 +26,6 @@
     * Logging the Spindle measurement and recording
         * via MySQL in a new VM. Ask Jasper how.
 
-* what was the `bash` file in the repository for? Delete it?
-
 * make copying the authorized_keys file also run after the machine is installed so that future changes to authorized_keys are synchronized (stage 2?). Be careful not to overwrite keys that have been added to the machine but not the ansible repository? It's currently part of `stage1.yaml`.
 
 ## Spindle logging
