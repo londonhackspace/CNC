@@ -1,0 +1,9 @@
+T1 P1 X0 Z0 D6 ;1/8 end mill 
+T2 P2 Z0 D6 ;1/16 end mill 
+T3 P3 X0 Y0 Z0 D6 ;#7 tap drill 
+T99999 P99999 Z0.1 ;big tool number 
+T6 P6 D6 ;matt tool 
+T10 P10 X0 Y0 Z0 D6 ;added 20160424 
+T5 P5 D6 ;added 20160424 
+T9 P9 D6 ;added 20160424 
+T14 P14 D6 ;added 20160424 
