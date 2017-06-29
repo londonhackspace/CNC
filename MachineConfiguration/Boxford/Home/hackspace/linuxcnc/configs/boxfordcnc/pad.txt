@@ -1,0 +1,7 @@
+btn-joystick x-
+thumb y+
+thumb2 y-
+top x+
+
+abs-hat0x normal
+abs-hat0y-position reversed
