@@ -1,0 +1,144 @@
+# joypad.hal -- hal configuration file to move a cnc machine using a joypad
+
+# [JOG]
+# Components 
+
+# We will use hal_joystick to read the axis value (float) for X Y Z, we will send these values to the 
+# speed pin of a sim-encoder component, for X Y Z, this component outputs Phase-A and Phase-B signal, 
+# just like a real quadrature rotary encoder. We will decode those signals with an encoder component for X Y Z
+# and will send the result counts value to the axis jog pin for X Y Z.
+
+# Load the hal_joystick component that creates joypad.axis.<n> and joypad.button.<n> pins
+loadusr hal_joystick -d /dev/input/js0 -p joypad
+
+# Load three encoder and three sim_encoder components
+loadrt encoder num_chan=3 
+loadrt sim_encoder num_chan=3 
+
+# Create links between the axis pins and the speed pin of the sim-encoder for X Y Z
+net velX joypad.axis.0 => sim-encoder.0.speed
+net velY joypad.axis.1 => sim-encoder.1.speed
+net velZ joypad.axis.3 => sim-encoder.2.speed
+
+# Create links between sim-encoder Phase-A and Phase-B and encoder Phase-A and Phase-B for X Y Z
+net XA sim-encoder.0.phase-A => encoder.0.phase-A
+net XB sim-encoder.0.phase-B => encoder.0.phase-B
+net YA sim-encoder.1.phase-A => encoder.1.phase-A
+net YB sim-encoder.1.phase-B => encoder.1.phase-B
+net ZA sim-encoder.2.phase-A => encoder.2.phase-A
+net ZB sim-encoder.2.phase-B => encoder.2.phase-B
+
+# Create links between encoder counts and jog counts for X Y Z
+net countX encoder.0.counts => axis.0.jog-counts
+net countY encoder.1.counts => axis.1.jog-counts
+net countZ encoder.2.counts => axis.2.jog-counts
+
+# Set parameter values
+setp encoder.0.position-scale            1
+setp encoder.0.x4-mode         TRUE
+setp encoder.1.position-scale            1
+setp encoder.1.x4-mode         TRUE
+setp encoder.2.position-scale            1
+setp encoder.2.x4-mode         TRUE
+setp encoder.capture-position.tmax            0
+setp encoder.update-counters.tmax            0
+setp sim-encoder.0.ppr     00000064
+setp sim-encoder.0.scale            1
+setp sim-encoder.1.ppr     00000064
+setp sim-encoder.1.scale            -1
+setp sim-encoder.2.ppr     00000064
+setp sim-encoder.2.scale            1
+setp sim-encoder.make-pulses.tmax            0
+setp sim-encoder.update-speed.tmax            0
+
+# Enable jog for X Y Z
+setp axis.0.jog-enable TRUE
+setp axis.1.jog-enable TRUE
+setp axis.2.jog-enable TRUE
+
+# Attach realtime functions to threads
+addf encoder.capture-position servo-thread
+addf sim-encoder.update-speed servo-thread
+addf encoder.update-counters base-thread
+addf sim-encoder.make-pulses base-thread
+
+
+
+# [BUTTON-SAMPLES]
+
+# Here are two examples on how to attach some functions to joypad buttons. We will use Halui pins for the 
+# second example.
+
+# Scale button 
+
+# we set two buttons (6 and 4) to choose the jogscale value. Pressing button 6 will set the scale to 0.01 
+# while pressing button 4 will set it to 0.1.
+
+# Components
+# We will use a two values selector and a flipflop component 
+
+loadrt mux2 
+loadrt flipflop 
+
+# Link between buttons and flipflop, flipflop will output TRUE when rising edge is detected on set pin, FALSE 
+# when rising edge is on reset pin.
+net button4 joypad.button.4 => flipflop.0.reset
+net button6 joypad.button.6 => flipflop.0.set
+
+# Link between flipflop and mux2, mux2 will output value mux2.0.in0 when mux2.0.sel is FALSE and mux2.0.in1 
+# when TRUE.
+net selected flipflop.0.out => mux2.0.sel
+
+# Link between the mux2 output and the jogscale pin for X Y Z
+net jogscale mux2.0.out => axis.0.jog-scale
+net jogscale mux2.0.out => axis.1.jog-scale
+net jogscale mux2.0.out => axis.2.jog-scale
+
+# Set parameters values
+setp flipflop.0.tmax         3750
+setp mux2.0.tmax         3601
+
+# Set the two scale values
+setp mux2.0.in0          0.1
+setp mux2.0.in1          0.01
+
+# Attach realtime functions to threads
+addf flipflop.0 servo-thread
+addf mux2.0 servo-thread
+
+# Flood button
+
+# We will set a single button (button 7) to start and stop flood. We will use Halui pins for that.
+
+# Components
+# We will use simply two and2 and 1 not components
+
+loadrt and2 count=2
+loadrt not 
+
+# Flood-is-on halui pin is linked to the and2.0.in0 and the not-flood-is-on, generated using the not component 
+# is linked to the and2.1.in0. So, if the flood is on, we will have and2.0.in0 TRUE and and2.1.in0 FALSE.
+net flood-is-on halui.flood.is-on => and2.0.in0
+net flood-is-on halui.flood.is-on => not.0.in
+net not-flood-is-on not.0.out => and2.1.in0
+
+# Link between button 7 and and.0.in1 and and.1.in1. In this way, if the flood for example is on, when the 
+# button is pressed TRUE will be sent to and2.0.in1 and and2.1.in1, while the in0 value for and2 components 
+# will be TRUE for the first and2 and FALSE for the second. So the first and2 will output TRUE.
+net button7 joypad.button.7 => and2.0.in1
+net button7 joypad.button.7 => and2.1.in1
+
+# Link between and2 outputs and halui pin flood on and off. So, as seen above, if the flood is on, the and2.0
+# will output TRUE and the flood will turn off.
+net floodOff and2.0.out => halui.flood.off
+net floodOn and2.1.out => halui.flood.on
+
+# Attach realtime functions to threads
+addf and2.0 servo-thread
+addf and2.1 servo-thread
+addf not.0 servo-thread
+
+
+
+
+

@@ -1,0 +1,30 @@
+# Include your customized HAL commands here
+# The commands in this file are run after the AXIS GUI (including PyVCP panel)
+# starts
+# This file will not be overwritten when you run stepconf again
+
+loadrt pwmgen output_type=0 # This creates a 1Hz signal
+loadrt encoder num_chan=1 # This will count the 1Hz signals
+loadrt edge count=1 # and this looks for a change in program.is-running to reset the timer
+
+loadusr -W timelogger
+
+addf pwmgen.make-pulses  servo-thread
+addf encoder.update-counters  servo-thread # If you don't have a base-thread then put it in the servo-thread
+addf pwmgen.update servo-thread
+addf encoder.capture-position servo-thread
+addf edge.0 servo-thread
+
+setp pwmgen.0.pwm-freq 1
+setp pwmgen.0.scale 1
+setp pwmgen.0.offset 0
+setp pwmgen.0.value 0.5
+setp encoder.0.counter-mode 1
+setp edge.0.in-edge false
+
+net run-timer halui.program.is-running => pwmgen.0.enable edge.0.in
+net OneHzPulse pwmgen.0.pwm => encoder.0.phase-A
+#net timer-reset edge.0.out => encoder.0.reset
+
+net timer-display encoder.0.position => pyvcp.timer
+net timer-display encoder.0.position => timelogger.timeinput
