@@ -9,7 +9,7 @@
     * It also hard codes the disk name (`/dev/sda`). Should this be a parameter, or should it ask for confirmation? By way of a wrapper script around calling Ansible?
     * `wait_for` for waiting after reboot still fails to work properly (...?, and how to handle change of ssh host key)
 
-* Harry: Finish `ansible_playbook.yaml` stage 2: actions after reboot. NOTE: perhaps it would be better to have different .yaml files for the two stages, so that they can be run separately manually. For a start, anyway. (How do you chain the two playbooks though (without merging them into one again) when wanting to have a one-action process in the future? You can always figure this out later though.)
+* Harry: Finish `ansible_playbook.yaml` stage 2: actions after reboot.
 
     * (How to send mail to the user? Answer: Just send To: local-user-name, thanks to the hackspace config the machine will forward it to the user's registered email address.)
     * Do we need NFS? Yes,
