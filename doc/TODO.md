@@ -11,7 +11,7 @@
 
 * Harry: Finish `ansible_playbook.yaml` stage 2: actions after reboot.
 
-    * (How to send mail to the user? Answer: Just send To: local-user-name, thanks to the hackspace config the machine will forward it to the user's registered email address.)
+    * (How to send mail to the user? Answer: Just send "To: $USER", thanks to the hackspace config the machine will forward it to the user's registered email address.)
     * Do we need NFS? Yes,
         * Ask Jasper to verify: seems only admins or so are there currently? Or can *all* hackspace members log in with LDAP and automatically get a home folder that we see here?
     * Configuration of connection to machine, and spindle settings and storing these (in Ansible)
