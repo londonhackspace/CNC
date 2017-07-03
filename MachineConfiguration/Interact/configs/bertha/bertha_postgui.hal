@@ -1,0 +1,70 @@
+############################################################
+# Connect signals to the GUI
+############################################################
+# Connect leds
+############################################################
+net run-on => gscreen.led_run
+net idle-on => gscreen.led_idle
+net pause-on => gscreen.led_pause
+net spin-fault => gscreen.led_spindle_fault
+net spindle-at-speed => gscreen.led_spindle_at_speed
+net spindle-cw => gscreen.led_spindle_fwd
+net spindle-ccw => gscreen.led_spindle_rev
+net ModeAuto => gscreen.led_auto
+net servo-on => gscreen.led_servo
+
+############################################################
+# Tool change
+############################################################
+net tool-prep  iocontrol.0.tool-prepared <=  iocontrol.0.tool-prepare
+net tool-prep-number gscreen.tool-number <= iocontrol.0.tool-prep-number
+net tool-change gscreen.change-tool <= iocontrol.0.tool-change
+net tool-changed gscreen.tool-changed => iocontrol.0.tool-changed
+
+############################################################
+# Jog signals
+############################################################
+net jog-speed <= gscreen.jog-spd-out
+net jog-ena-x <= gscreen.jog-enable-x-out
+net jog-ena-y <= gscreen.jog-enable-y-out
+net jog-ena-z <= gscreen.jog-enable-z-out
+net jog-ena-a <= gscreen.jog-enable-a-out
+
+############################################################
+# ESTOP signal
+############################################################
+net ext-estop => gscreen.ext-estop
+
+############################################################
+# Encoder fault signals
+############################################################
+net enc-fault-x => gscreen.enc-fault-x
+net enc-fault-y => gscreen.enc-fault-y
+net enc-fault-z => gscreen.enc-fault-z
+
+############################################################
+# Mist-Coolant
+############################################################
+net mist-ena => and2.11.in0 <= iocontrol.0.coolant-flood
+net mist-sel => and2.11.in1 <= gscreen.aux-coolant-m8-out
+net mist-out => hm2_5i25.0.7i77.0.0.output-11 <= and2.11.out
+net mist-out => gscreen.led_mist_on
+
+############################################################
+# Spindle Speed
+############################################################
+# Actual speed
+net  spindle-fb-rpm-abs-filtered => gscreen.spindle-spd-disp
+# Commanded speed
+#net spindle-vel-cmd-rpm-ramped => gscreen.spindle-spd-disp
+
+###############################################################
+# Axis Acceleration
+# Set the Max acceleration from the preferences tab
+###############################################################
+setp scale-maxa.gain 1.1
+net max_accel <= gscreen.accel_sel-f => scale-maxa.in
+net max_accel => ini.0.max_acceleration
+net max_accel => ini.1.max_acceleration
+net max_accel => ini.2.max_acceleration
+net max_accel_inc <= scale-maxa.out => ini.traj_max_acceleration

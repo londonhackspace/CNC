@@ -1,0 +1,5 @@
+# Include your shutdown HAL commands here
+# This file will not be overwritten when you run PNCconf again
+
+# Run this on exit to power off the compute and system
+#loadusr /home/cbrady/bin/power-off
