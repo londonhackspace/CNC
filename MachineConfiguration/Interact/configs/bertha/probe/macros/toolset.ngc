@@ -1,0 +1,17 @@
+o<toolset> sub
+(move to 0,0,0)
+G90 G0 G53 Z0
+G0 G53 X+0.01 Y+0.01
+G91
+F #<_hal[probe.ps_searchvel]>
+G38.2 Z[-#<_hal[probe.ps_probe_max]>]
+G1 Z[#<_hal[probe.ps_probe_latch]>] F#<_ini[TOOLSENSOR]RAPID_SPEED> 
+F #<_hal[probe.ps_probevel]>
+G4 P0.3 
+G38.2 Z[-#<_hal[probe.ps_probe_latch]>*2]
+G10 L10 P#1 Z#5169
+(move to z=0)
+G90
+G0 G53 Z0
+o<toolset> endsub
+M2

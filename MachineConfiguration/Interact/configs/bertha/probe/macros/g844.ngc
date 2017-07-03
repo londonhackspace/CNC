@@ -1,0 +1,36 @@
+o<g844> sub
+
+(debug, g844 x=#<x>  y=#<y>  z=#<z>  k=#<k>)
+M73
+o100 if [EXISTS[#<x>]]
+o101 if [EXISTS[#<y>]]
+  g0 X#<x> y#<y>
+o101 else
+  g0 X#<x> 
+o101 endif
+o100 endif
+
+o102 if [EXISTS[#<y>]]
+o103 if [EXISTS[#<x>]]
+o103 else
+  g0 Y#<y> 
+o103 endif
+o102 endif
+
+o104 if [EXISTS[#<k>]]
+#<_g844_k> = #<k>
+o104 else
+#<k> = #<_g844_k>
+o104 endif
+
+o105 if [EXISTS[#<z>]]
+#<_g844_z> = #<z>
+o105 else
+#<z> = #<_g844_z>
+o105 endif
+
+(debug, g33.1 z#<z> k#<k>)
+
+o<g844> endsub
+m2
+

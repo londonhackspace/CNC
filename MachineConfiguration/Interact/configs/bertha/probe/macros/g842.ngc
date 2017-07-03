@@ -1,0 +1,35 @@
+o<g842> sub
+
+M73
+o100 if [EXISTS[#<x>]]
+o101 if [EXISTS[#<y>]]
+  g0 X#<x> y#<y>
+o101 else
+  g0 X#<x> 
+o101 endif
+o100 endif
+
+o102 if [EXISTS[#<y>]]
+o103 if [EXISTS[#<x>]]
+o103 else
+  g0 Y#<y> 
+o103 endif
+o102 endif
+
+o104 if [EXISTS[#<f>]]
+#<_g842_f> = #<f>
+o104 else
+#<f> = #<_g842_f>
+o104 endif
+#<tpi> = [#<f> / #<_rpm>]
+o105 if [EXISTS[#<z>]]
+#<_g842_z> = #<z>
+o105 else
+#<z> = #<_g842_z>
+o105 endif
+(debug, tpi=#<tpi> z=#<z>)
+g33.1 z#<z> k#<tpi>
+
+o<g842> endsub
+m2
+
