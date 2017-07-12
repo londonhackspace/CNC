@@ -3,6 +3,23 @@
 
   tasks:
 
+# We are choosing that commit from NativeCAM because newer version
+# didn't have the setup.py (and other issue?; it was being worked on
+# to become a Debian package but not there yet?)
+
+  - name: "install NativeCAM"
+    shell: |
+      set -eux
+      if [ ! -e /etc/CNC-machine-setup/NativeCam_done ]; then
+          mkdir -p /etc/CNC-machine-setup/
+          apt-get install -y python-lxml
+          git clone https://github.com/FernV/NativeCAM.git ~/NativeCAM/
+          cd ~/NativeCAM/
+          git checkout -b local fd53a13bf6a6c7e1811f53a6d0a8ae0bb1b3e02f
+          python setup.py
+          date > /etc/CNC-machine-setup/NativeCam_done
+      fi
+
   - name: "update authorized_keys for root"
     copy: 
       src: authorized_keys

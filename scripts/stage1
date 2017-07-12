@@ -153,17 +153,6 @@ END
     echo "install grub-setup" # don't forget! uh
     chroot /chroot/cnc/ grub-setup /dev/sda
   
-# We are choosing that commit from NativeCAM because newer version
-# didn't have the setup.py (and other issue?; it was being worked on
-# to become a Debian package but not there yet?)
-    echo "install features"
-    chroot /chroot/cnc/ bash -c "
-      apt-get install -y python-lxml
-      git clone https://github.com/FernV/NativeCAM.git ~/NativeCAM/
-      cd ~/NativeCAM/
-      git checkout -b local fd53a13bf6a6c7e1811f53a6d0a8ae0bb1b3e02f
-      python setup.py"
-
 # Install graphical desktop. It's unclear from the LinuxCNC website
 # which desktop they are using; Debian Wheezy uses Gnome by default
 # (*"if you don’t want Gnome desktop select 'Advanced Options >
