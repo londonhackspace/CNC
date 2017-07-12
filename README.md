@@ -44,12 +44,39 @@ used to install other machines with (variants of) Debian, too.
             
         * `cd /etc/ansible; ansible-playbook -D -l "cnc" lhs/site.yml`
 
-1. any CNC admin: turn on / reset the machine you want to be (re)installed. Hit F12 key so that boot options come up, select 'network card' (this works for the "Optiplex 760" (boxfordcnc), will be different for other machines). Select image "Wheezy i386 diskless" from list (*NOTE*, this is to be changed to a special image for this purpuse. See "Add a new netboot image" in [TODO](doc/TODO.md) if not done.)
+1. any CNC admin: 
 
-    1. `ssh root@<hostname>` (`<hostname` being e.g. `boxfordcnc`, using ssh key, run once first to confirm that you can log in, and to add the ssh server key)
-    1. run `make stage1` (or `make`) (TODO: how to specify host in question?)
+    1. turn on / reset the machine you want to be (re)installed. Hit key so that boot options come up (F12 for the machine used for 'boxfordcnc');
 
-        * So see what's going on in stage1, `ssh root@<hostname>` then `cd stage1-logs; ls -lrt; less tmp.....`. This directory is currently persisted on the network image that's used, which may not persist or even be writable in the future. In case this happens, revert commit 184eeec28f771bec11b2c12a50f9b9dba7b9abe0.
+    1. boot:
+    
+        a. network boot, automatic network install via Debian debootstrap: currently **not working** because the parallel port is not being detected. Also, the new version of LinuxCNC may not be available quickly enough as Debian repository.
+
+            1. select 'network card' (this works for the "Optiplex 760" (boxfordcnc), will be different for other machines). Select image "Wheezy i386 diskless" from list (*NOTE*, this is to be changed to a special image for this purpuse. See "Add a new netboot image" in [TODO](doc/TODO.md) if not done.)
+
+                1. `ssh root@<hostname>` (`<hostname` being e.g. `boxfordcnc`, using ssh key, run once first to confirm that you can log in, and to add the ssh server key)
+                1. run `make stage1` (or `make`) (TODO: how to specify host in question?)
+
+                    * So see what's going on in stage1, `ssh root@<hostname>` then `cd stage1-logs; ls -lrt; less tmp.....`. This directory is currently persisted on the network image that's used, which may not persist or even be writable in the future. In case this happens, revert commit 184eeec28f771bec11b2c12a50f9b9dba7b9abe0.
+
+        b. LinuxCNC installation image from USB flashdrive 
+        
+            1. proceed via normal LinuxCNC installation; choose some user name and password (username doesn't matter, will be deleted later on). Reboot (no need to log in via the GUI, unless you want to see the ssh host key fingerprints via `for f in /etc/ssh/ssh_host_*_key; do ssh-keygen -l -f "$f"; done`).
+            
+            1. install the ssh keys for root:
+           
+                    scp authorized_keys $username@$hostname:
+                    ssh $username@$hostname
+                    sudo bash -c '(umask 077 && mkdir /root/.ssh) && cp authorized_keys /root/.ssh'
+                    
+                then log out again.
+                
+            1. remove the installation user:
+            
+                    ssh root@$hostname
+                    deluser $username
+                    
+                If it shows errors like "currently used by process 1234", run `killall --user $username`, then rerun the deluser command.
 
 1. a hackspace admin: run the general Hackspace scripts on the machine (there will be no `make stage2a` here, OK?)
 
