@@ -22,7 +22,7 @@
 
   - name: "install standard utils and services"
     shell: |
-	apt-get install -y rlwrap tcpdump strace git openntpd vim emacs aptitude lsof
+        apt-get install -y rlwrap tcpdump strace git openntpd vim emacs aptitude lsof
 
   - name: "update authorized_keys for root"
     copy: 
