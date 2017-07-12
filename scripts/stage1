@@ -116,6 +116,7 @@ END
 08_installs () {
     set -eu
     echo "install standard utils and services"
+    # NOTE: now also in 
     chroot /chroot/cnc/ apt-get install -y locales screen rlwrap tcpdump strace git openssh-client openssh-server openntpd vim emacs aptitude lsof
     # make sure we've still got ssh on the host? (Probably unnecessary
     # but perhaps installation in the chroot would kill by process

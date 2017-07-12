@@ -20,6 +20,10 @@
           date > /etc/CNC-machine-setup/NativeCam_done
       fi
 
+  - name: "install standard utils and services"
+    shell: |
+	apt-get install -y rlwrap tcpdump strace git openntpd vim emacs aptitude lsof
+
   - name: "update authorized_keys for root"
     copy: 
       src: authorized_keys
