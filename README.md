@@ -34,16 +34,6 @@ used to install other machines with (variants of) Debian, too.
     * log into boole `cd /etc/bind; less README` - git repo (if you don't understand the README, check through the git history for boxfordcnc via `git log -p`; run the signer command via sudo; then `sudo git commit -a -m "blabla"` (no push))
     * add IP and hostname for that MAC address: `cd /etc/dhcp; vim dhcpd.conf` - git repo
     * `/etc/init.d/isc-dhcp-server restart`
-    * add the machine to the set of hosts to receive general Hackspace modifications
-    * log into adminstuff
-    
-        * `sudo su` (or similar, keeping ssh key forwarding intact)
-        * `ssh $HOSTNAME`, confirm ssh fingerprint 
-        
-            * If you get fingerprint *change* warnings, see the section "Updating sshfp records" in 
-              [londonhackspace/ansible/README](https://github.com/londonhackspace/ansible/) (note: this page is only accessible if you're logged into Github and are a hackspace admin)
-            
-        * `cd /etc/ansible; ansible-playbook -D -l "cnc" lhs/site.yml`
 
 1. any CNC admin: 
 
@@ -81,7 +71,18 @@ used to install other machines with (variants of) Debian, too.
 
 1. a hackspace admin: run the general Hackspace scripts on the machine (there is no `make stage2a` target, just run them the default way)
 
-1. any CNC admin: run `make stage2b` (or just `make`) (TODO)
+    * add the machine to the set of hosts to receive general Hackspace modifications
+    * log into adminstuff
+    
+        * `sudo su` (or similar, keeping ssh key forwarding intact)
+        * `ssh $HOSTNAME`, confirm ssh fingerprint 
+        
+            * If you get fingerprint *change* warnings, see the section "Updating sshfp records" in 
+              [londonhackspace/ansible/README](https://github.com/londonhackspace/ansible/) (note: this page is only accessible if you're logged into Github and are a hackspace admin)
+            
+        * `cd /etc/ansible; ansible-playbook -D -l "cnc" lhs/site.yml`
+
+1. any CNC admin: run `make stage2b` (or just `make`)
 
 
 ### Update all existing machines
