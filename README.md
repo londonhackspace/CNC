@@ -33,6 +33,7 @@ used to install other machines with (variants of) Debian, too.
 
     * log into boole `cd /etc/bind; less README` - git repo
     * add IP and hostname for that MAC address `cd /etc/dhcp; vim dhcp.conf` - git repo
+    * `/etc/init.d/isc-dhcp-server restart`
     * add the machine to the set of hosts to receive general Hackspace modifications
     * log into adminstuff
     
