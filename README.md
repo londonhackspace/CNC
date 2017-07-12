@@ -79,7 +79,7 @@ used to install other machines with (variants of) Debian, too.
                     
                 If it shows errors like "currently used by process 1234", run `killall --user $username`, then rerun the deluser command.
 
-1. a hackspace admin: run the general Hackspace scripts on the machine (there will be no `make stage2a` here, OK?)
+1. a hackspace admin: run the general Hackspace scripts on the machine (there is no `make stage2a` target, just run them the default way)
 
 1. any CNC admin: run `make stage2b` (or just `make`) (TODO)
 
