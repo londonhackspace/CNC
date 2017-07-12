@@ -32,7 +32,7 @@ used to install other machines with (variants of) Debian, too.
 1. a hackspace admin: 
 
     * log into boole `cd /etc/bind; less README` - git repo (if you don't understand the README, check through the git history for boxfordcnc via `git log -p`; run the signer command via sudo; then `sudo git commit -a -m "blabla"` (no push))
-    * add IP and hostname for that MAC address `cd /etc/dhcp; vim dhcp.conf` - git repo
+    * add IP and hostname for that MAC address: `cd /etc/dhcp; vim dhcpd.conf` - git repo
     * add the machine to the set of hosts to receive general Hackspace modifications
     * log into adminstuff
     
