@@ -1,7 +1,15 @@
 #!/bin/bash
 
-test -e /etc/CNC-machine-setup
+# Detection for the debootstrap based way:
 
- # stage1 is already done except for the reboot if
- #   test -o /chroot/cnc/etc/CNC-machine-setup
- # but probably really also want to know whether the reboot has been done
+# (stage1 is already done except for the reboot if
+#   test -o /chroot/cnc/etc/CNC-machine-setup
+# but probably really also want to know whether the reboot has been done)
+
+if [ -e /etc/CNC-machine-setup ]; then
+    exit 0 # true
+fi
+
+# Detection of any LinuxCNC installation, e.g. done the manual way:
+
+test -d /etc/linuxcnc/
