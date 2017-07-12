@@ -89,7 +89,7 @@ used to install other machines with (variants of) Debian, too.
 
 For the CNC specific stuff:
 
-1. any CNC admin: run `make stage2b` (or just `make`) (TODO)
+1. any CNC admin: run `make stage2b` (or just `make`)
 
 For the general Hackspace stuff: the responsible Hackspace admin will
 run the updates on all machines automatically (no further thinking
