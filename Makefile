@@ -3,10 +3,10 @@
 # should do the same. ?
 
 
-all: stage1 stage2b
+all: stage2b
 
 stage1:
-	ansible-playbook -i inventory stage1.yaml
+	true "DO stage1 MANUALLY NOW, see README. Was: 'ansible-playbook -i inventory stage1.yaml'"
 
 stage2b:
 	ansible-playbook -i inventory stage2b.yaml
