@@ -1,4 +1,4 @@
-- hosts: boxfordcnc.lan.london.hackspace.org.uk
+- hosts: all 
   remote_user: root
 
   tasks:
