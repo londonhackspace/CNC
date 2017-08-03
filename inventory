@@ -1,3 +1,3 @@
 [cnc]
-boxfordcnc install_disk=/dev/sda
-gantrycnc install_disk=/dev/sda
+boxfordcnc
+gantrycnc
