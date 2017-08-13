@@ -2,13 +2,6 @@
 
 ## Todo points
 
-* Christian: Finish `ansible_playbook.yaml` stage 1: until reboot 
-
-    * [scripts/stage1](scripts/stage1) currently hard codes the host name (`boxfordcnc`):
-        * How are we going to tell Ansible which host(s) to install? Probably via Ansible's `hosts:` thingie, pass this into the script call (argument, env var?)
-    * It also hard codes the disk name (`/dev/sda`). Should this be a parameter, or should it ask for confirmation? By way of a wrapper script around calling Ansible?
-    * `wait_for` for waiting after reboot still fails to work properly (...?, and how to handle change of ssh host key)
-
 * Harry: Finish `ansible_playbook.yaml` stage 2: actions after reboot.
 
     * (How to send mail to the user? Answer: Just send "To: $USER", thanks to the hackspace config the machine will forward it to the user's registered email address.)
@@ -45,11 +38,6 @@ Either/and:
         > Anyway, just playing with it on the actual box will probably make things clear, perhaps it will work as is.
 
 * disk image from gantry cnc on lattner:  unpack (where?), mount, see where the spindle logging stuff is (unless easier to do from the above)
-
-
-## Cosmetics
-
-* Is there an ansible module to install packages? Doesn't really matter either way though since LinuxCNC is Debian only anyway.
 
 
 ## Add a new netboot image
