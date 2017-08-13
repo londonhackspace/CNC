@@ -52,7 +52,7 @@ used to install other machines with (variants of) Debian, too.
 
         b. LinuxCNC installation image from USB flashdrive 
         
-            1. proceed via normal LinuxCNC installation; choose some user name and password (username doesn't matter, will be deleted later on). Reboot (no need to log in via the GUI, unless you want to see the ssh host key fingerprints via `for f in /etc/ssh/ssh_host_*_key; do ssh-keygen -l -f "$f"; done`).
+            1. proceed via normal LinuxCNC installation; choose some user name and password (username doesn't matter, will be deleted in step 3 below). Reboot (no need to log in via the GUI, unless you want to see the ssh host key fingerprints via `for f in /etc/ssh/ssh_host_*_key; do ssh-keygen -l -f "$f"; done`).
             
             1. install the ssh keys for root:
            
