@@ -1,6 +1,8 @@
 
-# This is stupid of course (or not?) since there's setup.yaml which
-# should do the same. ?
+# (Previously there was a setup.yaml, which was superceded by this
+# Makefile because it seemed easier (perhaps just missing knowledge);
+# but now that stage1 is to be done manually there's really no point
+# whatsoever to a setup.yaml any more. Read README on how to use this)
 
 
 all: stage2b
