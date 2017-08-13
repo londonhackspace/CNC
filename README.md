@@ -37,7 +37,7 @@ used to install other machines with (variants of) Debian, too.
 
 1. any CNC admin: 
 
-    1. turn on / reset the machine you want to be (re)installed. Hit key so that boot options come up (F12 for the machine used for 'boxfordcnc');
+    1. turn on / reset the machine you want to be (re)installed. Hit key so that boot options come up (it is F12 for the machine that is being used for 'boxfordcnc');
 
     1. boot:
     
