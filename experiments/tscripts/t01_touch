@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo "$0 being run!"
-touch /chroot/cnc/t01-file
