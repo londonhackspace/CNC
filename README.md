@@ -41,7 +41,7 @@ used to install other machines with (variants of) Debian, too.
 
     1. boot:
     
-        a. network boot, automatic network install via Debian debootstrap: currently **not working** because the parallel port is not being detected. Also, the new version of LinuxCNC may not be available quickly enough as Debian repository.
+        a. BROKEN (use point b below instead): network boot, automatic network install via Debian debootstrap: currently **not working** because the parallel port is not being detected. Also, the new version of LinuxCNC may not be available quickly enough as Debian repository.
 
             1. select 'network card' (this works for the "Optiplex 760" (boxfordcnc), will be different for other machines). Select image "Wheezy i386 diskless" from list (*NOTE*, this is to be changed to a special image for this purpuse. See "Add a new netboot image" in [TODO](doc/TODO.md) if not done.)
 
