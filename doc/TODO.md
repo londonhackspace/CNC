@@ -2,6 +2,12 @@
 
 ## Todo points
 
+* authorized_keys is currently going to be messed up (figure out a solution with Jasper):
+
+    - the initial install instructions bring the authorized_keys file from this repository onto the machines for logging in as root
+        - this means that hackspace admins can't log into those machines yet; not a problem if someone who is both hackspace admin and in the CNC authorized_keys file runs the first hackspace ansible job.
+    - but whenever the hackspace ansible scripts are being run (hackspace admin), it will put the hackspace authorized_keys file onto the machines, which means it will remove access for the CNC maintainers, right?
+
 * Harry: Finish `ansible_playbook.yaml` stage 2: actions after reboot.
 
     * (How to send mail to the user? Answer: Just send "To: $USER", thanks to the hackspace config the machine will forward it to the user's registered email address.)
