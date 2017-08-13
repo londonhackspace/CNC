@@ -27,7 +27,8 @@
 Either/and:
 
 * https://forum.linuxcnc.org/10-advanced-configuration/32388-recording-how-long-the-spindle-is-in-use
-    * Christian:
+
+    * Christian (by email):
     
         > I've had a quick look. The script is trivial except for the
         > hal stuff, so I looked this up, this page may be a good
@@ -36,6 +37,8 @@ Either/and:
         > http://wiki.linuxcnc.org/cgi-bin/wiki.pl?HAL
         >
         > Anyway, just playing with it on the actual box will probably make things clear, perhaps it will work as is.
+
+        * Note: as people on #LinuxCNC confirmed, this is a different "HAL" than the HAL [that was used in Linux](https://en.wikipedia.org/wiki/HAL_(software)) (which Debian last had [in Wheezy](https://packages.debian.org/search?keywords=hal)).
 
 * disk image from gantry cnc on lattner:  unpack (where?), mount, see where the spindle logging stuff is (unless easier to do from the above)
 
