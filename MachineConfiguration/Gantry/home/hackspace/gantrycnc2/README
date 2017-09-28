@@ -1,4 +1,2 @@
-This configuration step is intended for Sherline 3-axis stepper machines.
+This configuration step is intended for the Gantry at London Hackspace as originally built by Matt
 
-There are 2 ini files, one for inch setups (Sherline3Axis_inch.ini) and one for
-metric setups (Sherline3Axis_mm.ini).
