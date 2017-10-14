@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pyvcp>
+<vbox>
+<hbox>
+<label> 
+<text>"Run time (s)"</text> 
+<font>("Helvetica",14)</font> 
+</label> 
+	<number>
+		<halpin>"timer"</halpin>
+		<format>"4.0f"</format>
+	</number>
+	</hbox>
+</vbox>
+</pyvcp>
+

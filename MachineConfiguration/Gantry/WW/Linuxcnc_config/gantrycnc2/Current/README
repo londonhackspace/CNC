@@ -1,0 +1,12 @@
+// Gantry CNC with teamed 'y'-axis steppers motors
+
+Configuration files...
+/gantrycnc2/gantry.ini
+HALFILE = /gantrycnc2/gantry/standard_pinout.hal
+HALFILE = gantry/core_stepper.hal
+POSTGUI_HALFILE = custom_postgui.hal
+
+
+
+
+

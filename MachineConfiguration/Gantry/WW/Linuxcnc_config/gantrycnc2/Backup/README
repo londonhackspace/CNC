@@ -1,0 +1,27 @@
+This configuration step is intended for Sherline 3-axis stepper machines.
+
+There are 2 ini files, one for inch setups (Sherline3Axis_inch.ini) and one for
+metric setups (Sherline3Axis_mm.ini).
+
+
+
+
+
+// Notes By Dean - Lines of interest 
+
+/gantrycnc2/axis_mm.ini
+HALFILE = core_sim.hal
+HALFILE = sim_spindle_encoder.hal
+HALFILE = axis_manualtoolchange.hal
+HALFILE = simulated_home.hal
+POSTGUI_HALFILE = custom_postgui.hal
+
+
+HSCNC/gantrycnc2/custom_postgui.hal
+loadusr -W timelogger
+net timer-display encoder.0.position => pyvcp.timer
+
+original back up made on 22.05.2016 and uploaded on 30.03.2017
+
+
+
